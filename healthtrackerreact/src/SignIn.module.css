@@ -1,0 +1,839 @@
+/* SignIn.module.css - Ultra Premium Enhanced */
+
+.wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: 
+    linear-gradient(135deg, 
+      rgba(12, 36, 97, 0.95) 0%,
+      rgba(30, 55, 153, 0.9) 30%,
+      rgba(74, 105, 189, 0.85) 70%,
+      rgba(108, 155, 225, 0.8) 100%
+    ),
+    url("./health-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  overflow: hidden;
+  z-index: 0;
+  
+}
+
+/* Animated Background with More Movement */
+.animatedBackground {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.floatingElement {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color) 0%, transparent 70%);
+  animation: floatElement 25s ease-in-out infinite;
+  opacity: 0.1;
+}
+
+.floatingElement:nth-child(1) {
+  --color: rgba(46, 204, 113, 0.3);
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  left: -100px;
+  animation-delay: 0s;
+  animation-duration: 30s;
+}
+
+.floatingElement:nth-child(2) {
+  --color: rgba(52, 152, 219, 0.3);
+  width: 300px;
+  height: 300px;
+  bottom: -50px;
+  right: -50px;
+  animation-delay: 5s;
+  animation-duration: 25s;
+}
+
+.floatingElement:nth-child(3) {
+  --color: rgba(155, 89, 182, 0.2);
+  width: 500px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 10s;
+  animation-duration: 35s;
+}
+
+@keyframes floatElement {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(100px, -50px) rotate(90deg) scale(1.1);
+  }
+  50% {
+    transform: translate(-50px, 100px) rotate(180deg) scale(1.2);
+  }
+  75% {
+    transform: translate(-100px, -100px) rotate(270deg) scale(1.1);
+  }
+}
+
+/* Dynamic Particles with More Movement */
+.particlesContainer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: particleDrift linear infinite;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes particleDrift {
+  0% {
+    transform: translateY(100vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Perfectly Aligned Card */
+.card {
+  width: 100%;
+  max-width: 450px;
+  min-height: auto;
+  background: rgba(30, 30, 35, 0.88);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  padding: 40px 35px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 20px 40px -15px rgba(0, 0, 0, 0.5),
+    0 0 80px rgba(46, 204, 113, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 8px 25px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 3;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: visible;
+  margin: 0 auto;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 30px 50px -20px rgba(0, 0, 0, 0.6),
+    0 0 120px rgba(46, 204, 113, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Enhanced Header - Perfectly Centered */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.healthIconWrapper {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.healthIcon {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  box-shadow: 
+    0 12px 30px rgba(46, 204, 113, 0.4),
+    0 0 40px rgba(46, 204, 113, 0.3),
+    inset 0 2px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.healthIcon:hover {
+  transform: scale(1.08) rotate(5deg);
+}
+
+.healthIcon svg {
+  width: 42px;
+  height: 42px;
+  fill: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.iconHalo {
+  position: absolute;
+  inset: -15px;
+  background: radial-gradient(circle, rgba(46, 204, 113, 0.3) 0%, transparent 70%);
+  border-radius: 32px;
+  z-index: 1;
+  animation: haloPulse 3s ease-in-out infinite;
+}
+
+@keyframes haloPulse {
+  0%, 100% { 
+    opacity: 0.4; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.8; 
+    transform: scale(1.1); 
+  }
+}
+
+.title {
+  font-size: 38px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff 0%, #2ecc71 50%, #3498db 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.title::after {
+  content: '✨';
+  position: absolute;
+  top: -8px;
+  right: -25px;
+  font-size: 20px;
+  animation: sparkleTwinkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkleTwinkle {
+  0%, 100% { opacity: 0.6; transform: scale(1) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.2) rotate(10deg); }
+}
+
+.subtitle {
+  color: #b0b0b0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  max-width: 280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.subtitle span {
+  color: #2ecc71;
+  font-weight: 600;
+  position: relative;
+}
+
+/* Perfectly Aligned Social Buttons */
+.socialButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.socialBtn {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.socialBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.6s ease;
+}
+
+.socialBtn:hover::before {
+  left: 100%;
+}
+
+.socialBtn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.googleBtn {
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+}
+
+.googleBtn:hover {
+  background: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.appleBtn {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.appleBtn:hover {
+  background: black;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.socialIcon {
+  width: 22px;
+  height: 22px;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.socialText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 0;
+}
+
+.socialLabel {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 2px;
+}
+
+.socialProvider {
+  font-weight: 600;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.arrowIcon {
+  font-size: 18px;
+  opacity: 0.7;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.socialBtn:hover .arrowIcon {
+  transform: translateX(3px);
+  opacity: 1;
+}
+
+/* Perfectly Centered Divider */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+  width: 100%;
+}
+
+.dividerLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.15), 
+    rgba(255, 255, 255, 0.3), 
+    rgba(255, 255, 255, 0.15), 
+    transparent
+  );
+}
+
+.dividerText {
+  padding: 0 15px;
+  color: #888;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Perfectly Aligned Input Fields */
+.inputGroup {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.inputLabel {
+  display: block;
+  color: #b0b0b0;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: 15px 45px 15px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #2ecc71;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.1);
+}
+
+.inputIcon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: #888;
+  transition: color 0.3s ease;
+}
+
+.input:focus + .inputIcon {
+  color: #2ecc71;
+}
+
+/* Password Header Alignment */
+.passwordHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  width: 100%;
+}
+
+.showPasswordBtn {
+  background: none;
+  border: none;
+  color: #2ecc71;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.showPasswordBtn:hover {
+  background: rgba(46, 204, 113, 0.1);
+}
+
+/* Options Row - Perfect Alignment */
+.optionsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkboxContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  width: 18px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.checkboxContainer:hover .checkmark {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.checkboxContainer input:checked ~ .checkmark {
+  background-color: #2ecc71;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkboxContainer input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkboxContainer .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkboxLabel {
+  color: #b0b0b0;
+  font-size: 13px;
+}
+
+.forgotLink {
+  color: #2ecc71;
+  text-decoration: none;
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.forgotLink:hover {
+  text-decoration: underline;
+}
+
+/* Perfectly Centered Login Button */
+.loginBtn {
+  width: 100%;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.loginBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(46, 204, 113, 0.4);
+}
+
+.loginBtn:active {
+  transform: translateY(0);
+}
+
+.btnText {
+  position: relative;
+  z-index: 2;
+}
+
+.btnIcon {
+  font-size: 18px;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.loginBtn:hover .btnIcon {
+  transform: translateX(3px);
+}
+
+.btnGlow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.loginBtn:hover .btnGlow {
+  opacity: 1;
+}
+
+/* Perfectly Centered Links */
+.linksContainer {
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.linkText {
+  color: #b0b0b0;
+  font-size: 14px;
+  margin: 8px 0;
+  line-height: 1.4;
+}
+
+.primaryLink {
+  color: #2ecc71;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.primaryLink:hover {
+  color: white;
+  text-shadow: 0 0 8px rgba(46, 204, 113, 0.4);
+}
+
+.linkArrow {
+  transition: transform 0.2s ease;
+}
+
+.primaryLink:hover .linkArrow {
+  transform: translateX(3px);
+}
+
+.secondaryLink {
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.secondaryLink:hover {
+  color: #2ecc71;
+}
+
+/* Centered Security Badge */
+.securityBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 20px;
+}
+
+.lockIcon {
+  font-size: 14px;
+  animation: lockBounce 2s ease-in-out infinite;
+}
+
+@keyframes lockBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1px); }
+}
+
+.securityText {
+  color: #888;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Enhanced Particle Positions */
+.particle:nth-child(1) { left: 5%; animation-duration: 15s; animation-delay: 0s; }
+.particle:nth-child(2) { left: 15%; animation-duration: 20s; animation-delay: 1s; }
+.particle:nth-child(3) { left: 25%; animation-duration: 25s; animation-delay: 2s; }
+.particle:nth-child(4) { left: 35%; animation-duration: 30s; animation-delay: 3s; }
+.particle:nth-child(5) { left: 45%; animation-duration: 35s; animation-delay: 4s; }
+.particle:nth-child(6) { left: 55%; animation-duration: 40s; animation-delay: 5s; }
+.particle:nth-child(7) { left: 65%; animation-duration: 45s; animation-delay: 6s; }
+.particle:nth-child(8) { left: 75%; animation-duration: 50s; animation-delay: 7s; }
+.particle:nth-child(9) { left: 85%; animation-duration: 55s; animation-delay: 8s; }
+.particle:nth-child(10) { left: 95%; animation-duration: 60s; animation-delay: 9s; }
+
+/* Responsive Design with Perfect Alignment */
+@media (max-width: 768px) {
+  .wrapper {
+    padding: 15px;
+  }
+  
+  .card {
+    max-width: 400px;
+    padding: 35px 25px;
+    border-radius: 24px;
+  }
+  
+  .title {
+    font-size: 32px;
+  }
+  
+  .healthIconWrapper {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .healthIcon {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .healthIcon svg {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .subtitle {
+    font-size: 15px;
+    max-width: 260px;
+  }
+  
+  .socialBtn {
+    padding: 14px 16px;
+  }
+  
+  .socialLabel {
+    display: none;
+  }
+  
+  .socialProvider {
+    font-size: 14px;
+  }
+  
+  .input {
+    padding: 14px 40px 14px 16px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+  
+  .title {
+    font-size: 28px;
+  }
+  
+  .healthIconWrapper {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+  }
+  
+  .healthIcon {
+    width: 70px;
+    height: 70px;
+    border-radius: 18px;
+  }
+  
+  .healthIcon svg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .socialBtn {
+    justify-content: center;
+  }
+  
+  .socialText {
+    display: none;
+  }
+  
+  .arrowIcon {
+    display: none;
+  }
+  
+  .dividerText {
+    font-size: 12px;
+    padding: 0 10px;
+  }
+  
+  .loginBtn {
+    padding: 14px;
+    font-size: 15px;
+  }
+}
+
+/* Dark Mode Adjustments */
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: rgba(25, 25, 30, 0.9);
+  }
+  
+  .input {
+    background: rgba(255, 255, 255, 0.03);
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .card {
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .input {
+    border-width: 2px;
+  }
+  
+  .loginBtn {
+    border: 2px solid white;
+  }
+}
