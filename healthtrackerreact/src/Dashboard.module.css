@@ -1816,7 +1816,7 @@ z-index: 10;
 
 .profileLabel {
   font-weight: 700;
-  color: var(--neon-blue);
+  color: var(--neon-blue); 
   font-size: 15px;
   display: flex;
   align-items: center;

@@ -690,7 +690,7 @@ const Dashboard = () => {
 
         <section className={css.celebritySection}>
           <div className={css.sectionHeader}>
-            <h2 className={css.sectionTitle}>🏆 Elite Athlete Routines</h2>
+            <h2 className={css.sectionTitle}>  Elite Athlete Routines</h2>
             <p className={css.sectionSubtitle}>Learn from the best athletes across different sports</p>
           </div>
 

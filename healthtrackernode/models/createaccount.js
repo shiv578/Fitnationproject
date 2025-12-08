@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const User = require("./users");
-
+ 
 // Create Account API
 router.post("/create-account", async (req, res) => {
   const { firstName, lastName, email, phone, gender, password, confirmPassword } = req.body;
