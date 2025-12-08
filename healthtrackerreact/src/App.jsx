@@ -8,8 +8,8 @@ export default function App() {
     <Routes>
       <Route path="/" element={<SignIn />} />
 
-      {/* 👇 ADD THIS ROUTE */}
-      <Route path="/signin" element={<SignIn />} />
+      {/* 👇 ADD THIS ROUTE shivam*/}
+      <Route path="/signin" element={<SignIn />} />   
 
       <Route path="/create-account" element={<Createaccount />} />
       <Route path="/dashboard" element={<Dashboard />} />

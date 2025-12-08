@@ -405,7 +405,17 @@ const Dashboard = () => {
             <h1 className={css.logoText}>FitNation</h1>
           </div>
 
-          <div
+      <div
+  className={css.avatarWrapper}
+  onMouseEnter={() => setShowUserMenu(true)}
+>
+  
+   <div
+    className={css.userMenuArea}
+    onMouseLeave={() => setShowUserMenu(false)}
+  >
+    </div></div> 
+   <div
             className={css.avatarWrapper}
             onMouseEnter={() => setShowUserMenu(true)}
             onMouseLeave={() => setShowUserMenu(false)}
@@ -455,7 +465,9 @@ const Dashboard = () => {
 
         {showWelcome && (
           <div className={css.welcomeBanner}>
-            <h2 className={css.welcomeTitle}>Welcome to FitNation! 💪</h2>
+<h2 className={css.welcomeTitle}>
+  Welcome to FitNation, <span className={css.userNameAccent}>{user?.firstName}</span>! 💪
+</h2>
             <p className={css.welcomeText}>
               Track your fitness journey with BMI calculator, water tracker, and learn from elite athletes' routines.
               Stay hydrated and achieve your goals!
@@ -481,18 +493,30 @@ const Dashboard = () => {
                 {bmiCategory}
               </div>
             </div>
+<div className={css.bmiBars}>
 
-            <div className={css.bmiScale}>
-              <div className={css.scaleTrack}></div>
-              <div
-                className={css.scaleMarker}
-                style={{
-                  left: `${Math.min(100, Math.max(0, ((bmi - 10) / 30) * 100))}%`,
-                  background: bmiColor,
-                  boxShadow: `0 0 12px ${bmiColor}88`
-                }}
-              ></div>
-            </div>
+  <div className={css.bmiOuterGlow}></div>
+
+  <div className={css.bmiTrack}>
+    <div 
+      className={css.bmiColorBar}
+      style={{
+        width: `${Math.min(100, Math.max(0, ((bmi - 10) / 30) * 100))}%`
+      }}
+    ></div>
+  </div>
+
+  <div 
+    className={css.bmiPointer}
+    style={{
+      left: `${Math.min(100, Math.max(0, ((bmi - 10) / 30) * 100))}%`
+    }}
+  ></div>
+
+</div>
+
+
+
 
             <div className={css.scaleLabels}>
               <span>Underweight</span>
@@ -501,29 +525,30 @@ const Dashboard = () => {
               <span>Obese</span>
             </div>
 
-            <div className={css.sliderGroup}>
-              <label className={css.sliderLabel}>Height: {height} cm</label>
-              <input
-                type="range"
-                min="100"
-                max="220"
-                value={height}
-                onChange={(e) => setHeight(parseInt(e.target.value))}
-                className={css.slider}
-              />
-            </div>
+          <div className={css.sliderRow}>
+  <span className={css.sliderText}>Height: {height} cm</span>
+  <input
+    type="range"
+    min="100"
+    max="220"
+    value={height}
+    onChange={(e) => setHeight(parseInt(e.target.value))}
+    className={css.sliderInput}
+  />
+</div>
 
-            <div className={css.sliderGroup}>
-              <label className={css.sliderLabel}>Weight: {weight} kg</label>
-              <input
-                type="range"
-                min="40"
-                max="150"
-                value={weight}
-                onChange={(e) => setWeight(parseInt(e.target.value))}
-                className={css.slider}
-              />
-            </div>
+<div className={css.sliderRow}>
+  <span className={css.sliderText}>Weight: {weight} kg</span>
+  <input
+    type="range"
+    min="40"
+    max="150"
+    value={weight}
+    onChange={(e) => setWeight(parseInt(e.target.value))}
+    className={css.sliderInput}
+  />
+</div>
+
           </div>
 
           <div
@@ -893,37 +918,36 @@ const Dashboard = () => {
             </div>
           </div>
         )}
+{showLogoutConfirm && (
+  <div className={css.modalOverlay}>
+    <div className={css.logoutBox}>
+      
+      <h2 className={css.logoutTitle}>Log out?</h2>
+      <p className={css.logoutText}>Are you sure you want to logout?</p>
 
-        {showLogoutConfirm && (
-          <div className={css.modalOverlay}>
-            <div className={css.modalContent}>
-              <div style={{ padding: "30px", textAlign: "center" }}>
-                <h2 style={{ color: "white" }}>Log out?</h2>
-                <p style={{ color: "rgba(255,255,255,0.6)" }}>
-                  Are you sure you want to logout?
-                </p>
+      <div className={css.logoutButtons}>
+        <button
+          className={css.logoutYes}
+          onClick={() => {
+            localStorage.removeItem("user");
+            navigate("/signin");
+          }}
+        >
+          Yes
+        </button>
 
-                <div style={{
-                  display: "flex",
-                  marginTop: "20px",
-                  gap: "20px",
-                  justifyContent: "center"
-                }}>
-                  <button className={css.inspireButton} onClick={() => {
-                    localStorage.removeItem("user");
-                    navigate("/signin");
-                  }}>
-                    Yes
-                  </button>
+        <button
+          className={css.logoutNo}
+          onClick={() => setShowLogoutConfirm(false)}
+        >
+          No
+        </button>
+      </div>
 
-                  <button className={css.secondaryButton} onClick={() => setShowLogoutConfirm(false)}>
-                    No
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+    </div>
+  </div>
+)}
+
 
         {showQuotePopup && (
           <div className={css.quotePopup}>

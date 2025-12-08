@@ -1,4 +1,80 @@
 /* SignIn.module.css - Ultra Premium Enhanced */
+/* FULLSCREEN DIMMED BACKGROUND */
+.successOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* POPUP BOX */
+.successPopup {
+  background: rgba(30, 41, 59, 0.95);
+  padding: 40px 60px;
+  border-radius: 20px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 0 40px rgba(0,255,180,0.3);
+  transform: scale(0.5);
+  animation: popupScale 0.4s ease forwards;
+}
+
+/* CIRCLE WITH GLOW */
+.checkCircle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  box-shadow: 0 0 25px rgba(54,209,220,0.7);
+  animation: glowPulse 1.6s infinite ease-in-out;
+}
+
+/* CHECKMARK */
+.checkmark {
+  font-size: 48px;
+  font-weight: 800;
+  color: white;
+}
+
+/* TEXT */
+.successText {
+  margin-top: 15px;
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ANIMATIONS */
+@keyframes popupScale {
+  from { transform: scale(0.4); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 25px rgba(54,209,220,0.7); }
+  50% { box-shadow: 0 0 40px rgba(54,209,220,1); }
+}
+
+
 
 .wrapper {
   position: fixed;
@@ -530,6 +606,8 @@
   display: none;
 }
 
+
+
 .checkboxContainer input:checked ~ .checkmark:after {
   display: block;
 }
@@ -835,5 +913,33 @@
   
   .loginBtn {
     border: 2px solid white;
+  }
+}
+.toast {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 41, 59, 0.9);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4), 0 0 20px rgba(54,209,220,0.4);
+  animation: fadeSlide 0.35s ease forwards;
+  z-index: 99999;
+  font-size: 15px;
+  letter-spacing: .3px;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0px);
   }
 }

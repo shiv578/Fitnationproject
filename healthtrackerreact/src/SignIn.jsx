@@ -7,6 +7,10 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [toast, setToast] = useState({ show: false, message: "" });
+  const [showSuccess, setShowSuccess] = useState(false);
+
+
 
 const handleLogin = async () => {
   const res = await fetch("http://localhost:5000/api/sign-in", {
@@ -16,15 +20,17 @@ const handleLogin = async () => {
   });
 
   const data = await res.json();
-  alert(data.message);
+setToast({ show: true, message: data.message });
+setTimeout(() => setToast({ show: false, message: "" }), 3000);
 
   if (data.success) {
     // ⭐ SAVE FULL USER OBJECT EXACTLY AS BACKEND SENDS
     localStorage.setItem("user", JSON.stringify(data.user));
 
     // Redirect
+  setTimeout(() => {
     window.location.href = "/dashboard";
-  }
+  }, 1800);  }
 };
 
 
@@ -44,6 +50,24 @@ const handleLogin = async () => {
           <div key={i} className={styles.particle}></div>
         ))}
       </div>
+
+      {toast.show && (
+  <div className={styles.toast}>
+    <span>{toast.message}</span>
+    {showSuccess && (
+  <div className={styles.successOverlay}>
+    <div className={styles.successPopup}>
+      <div className={styles.checkCircle}>
+        <div className={styles.checkmark}>✓</div>
+      </div>
+      <h2 className={styles.successText}>Login Successful</h2>
+    </div>
+  </div>
+)}
+
+  </div>
+)}
+
       
 
       <div className={styles.card}>
