@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import css from './Dashboard.module.css';
-
+import GoogleFitLogin from "./GoogleFitLogin";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -10,6 +10,47 @@ const Dashboard = () => {
     const saved = localStorage.getItem("user");
     return saved ? JSON.parse(saved) : null;
   });
+const [googleFitData, setGoogleFitData] = useState(
+  JSON.parse(localStorage.getItem("googleFitData")) || {}
+);
+useEffect(() => {
+  const token = localStorage.getItem("googleFitAccessToken");
+  if (!token) return;
+
+  fetch("http://localhost:5000/api/auth/google/fetch-latest", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ access_token: token })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        localStorage.setItem("googleFitData", JSON.stringify(data.fitnessData));
+        setGoogleFitData(data.fitnessData); 
+      }
+    })
+    .catch(err => console.log("GOOGLE FIT UPDATE ERROR:", err));
+}, []);
+
+useEffect(() => {
+  const refreshToken = localStorage.getItem("googleFitRefreshToken");
+  if (!refreshToken) return;
+
+  fetch("http://localhost:5000/api/googlefit/refresh", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ refresh_token: refreshToken })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        localStorage.setItem("googleFitAccessToken", data.access_token);
+        console.log("Token refreshed!");
+      }
+    })
+    .catch(err => console.log("REFRESH ERROR:", err));
+}, []);
+
 
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
@@ -271,7 +312,7 @@ const Dashboard = () => {
   const [currentQuote, setCurrentQuote] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/user/profile/" + user._id)
+fetch(`http://localhost:5000/api/user/${user._id}`)
       .then(res => res.json())
       .then(data => setUserDetails(data))
       .catch(err => console.log(err));
@@ -404,6 +445,7 @@ const Dashboard = () => {
           <div className={css.logo}>
             <h1 className={css.logoText}>FitNation</h1>
           </div>
+  <GoogleFitLogin />
 
       <div
   className={css.avatarWrapper}
@@ -416,13 +458,18 @@ const Dashboard = () => {
   >
     </div></div> 
    <div
+   
             className={css.avatarWrapper}
+            
+            
+            
             onMouseEnter={() => setShowUserMenu(true)}
             onMouseLeave={() => setShowUserMenu(false)}
           >
             <div className={css.userAvatar}>
               {user?.firstName?.[0] || "U"}
             </div>
+            
 
             {showUserMenu && (
               <div className={css.userMenu}>
@@ -435,6 +482,7 @@ const Dashboard = () => {
                   }}
                 >
                   👤 Profile
+                  
                 </div>
 
                 <div
@@ -476,6 +524,22 @@ const Dashboard = () => {
         )}
 
         <div className={css.gridContainer}>
+          <div className={css.glassCard}>
+  <div className={css.cardHeader}>
+    <div className={css.cardIcon}>💓</div>
+    <h1 className={css.cardTitle}>Your Fitness Data</h1>
+  </div>
+
+  <div style={{ marginTop: "20px", color: "white", fontSize: "18px", lineHeight: "28px" }}>
+    <p><strong>Steps Today:</strong> {googleFitData.steps ?? "No Data"}</p>
+    <p><strong>Heart Rate:</strong> {googleFitData.heartRate ?? "No Data"} bpm</p>
+    <p><strong>Distance Walked:</strong> {googleFitData.distance ?? "No Data"} km</p>
+    <p><strong>Calories Burned:</strong> {googleFitData.calories ?? "No Data"} kcal</p>
+
+    
+  </div>
+</div>
+
           <div
             className={css.glassCard}
             onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'}

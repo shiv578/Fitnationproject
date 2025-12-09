@@ -1,4 +1,13 @@
+
+/* ===== Fit card ===== */
+
+
+
+
+
 /* ===== BASE & VARIABLES ===== */
+
+
 :root {
   --primary-gradient: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
   --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -2775,4 +2784,49 @@ z-index: 10;
 @keyframes loadingSpin {
   to { transform: rotate(360deg); }
 }
+
+
+.fitDetails {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fitItem {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.25s ease;
+}
+
+.fitItem:hover {
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateX(4px);
+}
+
+.fitLabel {
+  font-weight: 700;
+  font-size: 16px;
+  color: white;
+}
+
+.fitValue {
+  font-weight: 600;
+  font-size: 16px;
+  color: #36d1dc;
+  text-shadow: 0 0 6px rgba(54, 209, 220, 0.5);
+}
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;  /* space between Google Fit button and profile */
+  margin-left: auto; /* pushes them to right side */
+}
+
+
 

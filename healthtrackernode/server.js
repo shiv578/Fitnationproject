@@ -5,7 +5,9 @@ const bodyParser = require("body-parser");
 
 const createAccountRoute = require("./models/createaccount");
 const signInRoute = require("./models/signin");
-const updateProfileRoute = require("./models/updateProfile");  // ✅ single import
+const updateProfileRoute = require("./models/updateProfile");
+const googleFitRoute = require("./googleFit/googleFitRoute");
+const googleFitRefreshRoute = require("./googleFit/googleFitRefresh");
 
 const app = express();
 
@@ -21,7 +23,9 @@ mongoose.connect("mongodb://localhost:27017/healthtracker")
 // Routes
 app.use("/api", createAccountRoute);
 app.use("/api", signInRoute);
-app.use("/api", updateProfileRoute);   // ✅ correct mount
+app.use("/api", updateProfileRoute);
+app.use("/api", googleFitRoute);        // ✅ Google Fit main route
+app.use("/api", googleFitRefreshRoute); // ✅ Google Fit refresh token route
 
 // Start Server
 app.listen(5000, () => console.log("Server running on port 5000"));

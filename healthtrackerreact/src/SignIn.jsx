@@ -30,9 +30,11 @@ setTimeout(() => setToast({ show: false, message: "" }), 3000);
     // Redirect
   setTimeout(() => {
     window.location.href = "/dashboard";
+  
   }, 1800);  }
-};
 
+};
+// not place that google fit button in the nav bar liie this
 
 
   return (
