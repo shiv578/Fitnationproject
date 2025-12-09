@@ -1,0 +1,9 @@
+# Do not upload environment secrets
+.env
+
+# Prevent accidental upload of Google Fit config files
+googleFit/googleFitConfig.js
+googleFit/googleFitRefresh.js
+
+# Node modules should never be committed
+node_modules/
