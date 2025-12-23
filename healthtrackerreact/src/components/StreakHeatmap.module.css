@@ -1,0 +1,70 @@
+/* OUTER CONTAINER */
+.container {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 39, 74, 0.95),
+    rgba(6, 1, 67, 0.95)
+  );
+  padding: 22px 24px;
+  border-radius: 18px;
+  width: 98%;
+  overflow-x: hidden; /* IMPORTANT: fill space, no scroll */
+}
+
+/* HEADER */
+.header {
+  font-size: 14px;
+  color: #ffffff;
+  margin-bottom: 18px;
+  opacity: 0.9;
+}
+
+/* MONTHS ROW */
+.months {
+  display: flex;
+  gap: 25px;              /* 🔥 MORE SPACE BETWEEN MONTHS */
+  justify-content: space-between; /* 🔥 FILL WHOLE WIDTH */
+}
+
+/* ONE MONTH COLUMN */
+.monthColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* GRID: 7 ROWS */
+.grid {
+  display: grid;
+  grid-template-rows: repeat(7, 14px); /* 🔥 BIGGER CELLS */
+  grid-auto-flow: column;
+  gap: 6px;                            /* 🔥 MORE GAP BETWEEN CELLS */
+}
+
+/* DAY CELL */
+.cell {
+  width: 14px;                         /* 🔥 BIGGER */
+  height: 14px;
+  background: rgba(255, 255, 255, 0.12); /* Dashboard-matched grey */
+  border-radius: 4px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* ACTIVE DAY */
+.active {
+  background: #36d1dc; /* 🔥 MATCH DASHBOARD ACCENT */
+  box-shadow: 0 0 10px rgba(54, 209, 220, 0.8);
+}
+
+/* HOVER EFFECT */
+.cell:hover {
+  transform: scale(1.25);
+}
+
+/* MONTH LABEL */
+.monthLabel {
+  margin-top: 10px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.75);
+}
+

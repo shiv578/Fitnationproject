@@ -1,3 +1,70 @@
+/* Theme Styles */
+body.light-theme {
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%) !important;
+  color: #1a202c;
+}
+body.light-theme .glassCard {
+  background: rgba(255,255,255,0.85) !important;
+  box-shadow: 0 4px 24px #b0c4d633;
+  color: #1a202c;
+}
+body.light-theme .navbar, body.light-theme .footerContainer {
+  background: rgba(255,255,255,0.95) !important;
+  color: #1a202c;
+}
+body.light-theme .primaryButton, body.light-theme .saveBtn, body.light-theme .editBtn {
+  background: linear-gradient(135deg, #36d1dc, #5b86e5) !important;
+  color: #fff !important;
+}
+body.light-theme .todoRow {
+  background: rgba(54,209,220,0.08) !important;
+  color: #1a202c !important;
+}
+body.light-theme .todoLabel {
+  color: #222 !important;
+}
+body.light-theme .bmiValue {
+  color: #36d1dc !important;
+}
+body.light-theme .bmiCategory {
+  background: #36d1dc22 !important;
+  border: 1px solid #36d1dc !important;
+  color: #1a202c !important;
+}
+
+body.dark-theme {
+  background: linear-gradient(135deg, #23243a 0%, #181a2b 100%) !important;
+  color: #fff;
+}
+body.dark-theme .glassCard {
+  background: rgba(34,36,58,0.92) !important;
+  box-shadow: 0 4px 24px #36d1dc33;
+  color: #fff;
+}
+body.dark-theme .navbar, body.dark-theme .footerContainer {
+  background: rgba(34,36,58,0.98) !important;
+  color: #fff;
+}
+body.dark-theme .primaryButton, body.dark-theme .saveBtn, body.dark-theme .editBtn {
+  background: linear-gradient(135deg, #23243a, #36d1dc) !important;
+  color: #fff !important;
+}
+body.dark-theme .todoRow {
+  background: rgba(54,209,220,0.12) !important;
+  color: #fff !important;
+}
+body.dark-theme .todoLabel {
+  color: #fff !important;
+}
+body.dark-theme .bmiValue {
+  color: #36d1dc !important;
+}
+body.dark-theme .bmiCategory {
+  background: #36d1dc22 !important;
+  border: 1px solid #36d1dc !important;
+  color: #fff !important;
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

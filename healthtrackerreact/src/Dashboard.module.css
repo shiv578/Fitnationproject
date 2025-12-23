@@ -1,5 +1,5 @@
 
-/* ===== Fit card ===== */
+   
 
 
 
@@ -8,12 +8,14 @@
 /* ===== BASE & VARIABLES ===== */
 
 
+
+
 :root {
   --primary-gradient: linear-gradient(135deg, #36d1dc 0%, #5b86e5 100%);
   --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --accent-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  --dark-bg: #0f172a;
-  --darker-bg: #0a142a;
+  --dark-bg: #070b1a;        /* deep navy */
+  --darker-bg: #050814; 
   --glass-bg: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.1);
   --neon-blue: #36d1dc;
@@ -32,9 +34,9 @@
 .container {
   min-height: 100vh;
   background: 
-    radial-gradient(circle at 10% 20%, rgba(54, 209, 220, 0.15) 0%, transparent 20%),
-    radial-gradient(circle at 90% 80%, rgba(91, 134, 229, 0.1) 0%, transparent 20%),
-    linear-gradient(135deg, var(--dark-bg) 0%, #1a1a2e 100%);
+      radial-gradient(circle at 20% 20%, rgba(54, 209, 220, 0.12), transparent 35%),
+    radial-gradient(circle at 80% 80%, rgba(91, 134, 229, 0.10), transparent 35%),
+    linear-gradient(180deg, #070b1a 0%, #050814 100%);
   color: var(--text-primary);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   display: flex;
@@ -58,6 +60,18 @@
   pointer-events: none;
   z-index: 0;
 }
+.container::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+  opacity: 0.35;
+  z-index: 0;
+}
+
 
 .contentContainer {
   width: 100%;
@@ -319,13 +333,15 @@ transform: translateY(-4px) scale(0.97);
   margin-bottom: 50px;
 }
 
+
+
 .glassCard {
   background: rgba(255, 255, 255, 0.05);
+  
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 30px;
   transition: var(--transition-smooth);
-  position: relative;
   overflow: hidden;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -341,7 +357,9 @@ transform: translateY(-4px) scale(0.97);
   background: radial-gradient(circle at top right, rgba(54, 209, 220, 0.1), transparent 70%);
   opacity: 0;
   transition: opacity 0.5s ease;
+  pointer-events: none;
 }
+
 
 .glassCard:hover::before {
   opacity: 1;
@@ -418,11 +436,11 @@ transform: translateY(-4px) scale(0.97);
 /* ===== BMI DISPLAY ENHANCEMENT ===== */
 .bmiDisplay {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 24px;   /* 👈 more air */
   position: relative;
 }
 
-.bmiValue {
+.bmiHistoryValue {
   font-size: 56px;
   font-weight: 900;
   margin-bottom: 10px;
@@ -481,16 +499,7 @@ transform: translateY(-4px) scale(0.97);
   color: rgba(255, 255, 255, 0.6);
 }
 
-.sliderRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 15px;
-  padding: 0 10px;
-  position: relative;
-z-index: 10;
 
-}
 /* Slider Row Wrapper */
 .sliderRow {
   display: flex;
@@ -571,8 +580,8 @@ z-index: 10;
 .bmiBars {
   position: relative;
   width: 100%;
-  margin: 25px 0;
   height: 65px;
+  margin: 22px 0 26px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -648,6 +657,8 @@ z-index: 10;
   letter-spacing: 0.3px;
   color: rgba(255,255,255,0.75);
   transition: 0.3s ease;
+    margin-bottom: 22px;
+
 }
 
 .scaleLabels span:hover {
@@ -1088,15 +1099,17 @@ z-index: 10;
   background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
   z-index: 1;
 }
-
 .slideImg {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+
+  object-fit: cover;          /* fills div like your example */
+  object-position: center top;/* keeps face + body centered */
+
   border-radius: 24px;
   transition: transform 8s ease-out;
 }
+
 
 .slideCard:hover .slideImg {
   transform: scale(1.05);
@@ -2824,9 +2837,941 @@ z-index: 10;
 .navRight {
   display: flex;
   align-items: center;
-  gap: 16px;  /* space between Google Fit button and profile */
-  margin-left: auto; /* pushes them to right side */
+  gap: 16px;
+  margin-left: auto;
 }
+
+.googleBtn {
+  display: flex;
+  align-items: center;
+    margin-right: 25px;   /* 👈 pulls button left towards avatar */
+
+  gap: 12px;
+
+  background: #ffffff;
+  color: #1f1f1f;
+
+  padding: 10px 16px;
+  border-radius: 999px;
+
+  border: 1px solid #dadce0;
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  transition: all 0.25s ease;
+}
+
+.googleBtn:hover {
+  background: #f8f9fa;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.googleBtn:active {
+  background: #f1f3f4;
+}
+
+.googleIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 15px;
+  height: 15px;
+
+  border-radius: 50%;
+  background: white;
+}
+
+.googleText {
+  white-space: nowrap;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.todayProgress {
+  margin-top: 14px;
+  font-size: 14px;
+  color: #36d1dc;
+}
+/* ROW: Form + Graphs */
+.activityRow {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* half + big */
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* Bigger right card */
+.bigGraphCard {
+  padding: 30px;
+}
+
+/* Graph layout inside big card */
+.graphGrid {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Each graph block */
+.graphBox {
+  background: rgba(255,255,255,0.03);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+/* Graph titles */
+.graphTitle {
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.goalBadge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.goalText {
+  color: #9be7ff;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.goalControl {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #36d1dc33, #5b86e533);
+  border: 1px solid rgba(54, 209, 220, 0.5);
+  box-shadow: 0 0 12px rgba(54, 209, 220, 0.25);
+  transition: all 0.3s ease;
+}
+
+.goalControl:hover {
+  box-shadow: 0 0 18px rgba(54, 209, 220, 0.5);
+}
+
+.dropIcon {
+  font-size: 16px;
+}
+
+
+
+.goalInput {
+  width: 36px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #36d1dc;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.goalInput::-webkit-inner-spin-button,
+.goalInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.goalUnit {
+  color: #ffffffcc;
+  font-size: 14px;
+}
+.goalControl:has(.goalInput:focus) {
+  box-shadow: 0 0 22px rgba(54, 209, 220, 0.8);
+  border-color: #36d1dc;
+}
+
+/* =========================
+   TODO CARD
+========================= */
+
+.todoActions {
+  display: flex;
+  gap: 8px;
+}
+
+/* =========================
+   TODO ROW
+========================= */
+
+.todoRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+  transition: all 0.35s ease;
+}
+
+.todoRow:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(
+    135deg,
+    rgba(54, 209, 220, 0.12),
+    rgba(91, 134, 229, 0.08)
+  );
+  border-color: rgba(54, 209, 220, 0.35);
+  box-shadow: 0 10px 30px rgba(54, 209, 220, 0.25);
+}
+
+.todoRow.completed {
+  opacity: 0.85;
+  background: linear-gradient(
+    135deg,
+    rgba(40, 167, 69, 0.12),
+    rgba(40, 167, 69, 0.05)
+  );
+  border-color: rgba(40, 167, 69, 0.35);
+}
+
+/* =========================
+   LEFT SECTION
+========================= */
+
+.todoLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* =========================
+   CHECKBOX
+========================= */
+
+.tickBox {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  border: 2px solid #36d1dc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.tickBox:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 18px rgba(54, 209, 220, 0.6);
+}
+
+.tickActive {
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  border-color: transparent;
+  box-shadow: 0 0 18px rgba(54, 209, 220, 0.7);
+}
+
+.tickActive::after {
+  content: "✔";
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* =========================
+   LABEL
+========================= */
+
+.todoLabel {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.4px;
+  white-space: normal;
+}
+
+.todoRow.completed .todoLabel {
+  text-decoration: line-through;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================
+   RIGHT SECTION
+========================= */
+
+.todoRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* =========================
+   INPUT (FIXED WIDTH)
+========================= */
+
+.todoInput {
+  width: 120px;
+  max-width: 120px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.todoInput:focus {
+  outline: none;
+  border-color: #36d1dc;
+  box-shadow: 0 0 0 3px rgba(54, 209, 220, 0.25);
+}
+
+.todoInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* =========================
+   EDIT BUTTON
+========================= */
+
+.editBtn {
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #36d1dc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.editBtn:hover {
+  background: rgba(54, 209, 220, 0.2);
+  box-shadow: 0 4px 14px rgba(54, 209, 220, 0.25);
+}
+
+/* =========================
+   SAVE BUTTON
+========================= */
+
+.saveBtn {
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* =========================
+   DELETE BUTTON
+========================= */
+
+.deleteTodoBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 80, 80, 0.15);
+  border: 1px solid rgba(255, 80, 80, 0.4);
+  color: #ff5c5c;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deleteTodoBtn:hover {
+  background: rgba(255, 80, 80, 0.3);
+  box-shadow: 0 0 12px rgba(255, 80, 80, 0.4);
+}
+
+/* =========================
+   ADD TODO ROW
+========================= */
+
+.addTodoRow {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.addTodoBtn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+  .todoRow {
+    padding: 14px;
+  }
+
+  .todoInput {
+    width: 100px;
+  }
+
+  .todoLabel {
+    font-size: 15px;
+  }
+}
+
+.saveBmiBtn {
+  margin-top: 26px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  transition: transform 0.2s ease;
+}
+
+.saveBmiBtn:hover {
+  transform: scale(1.02);
+}
+
+.flipCard {
+  perspective: 1200px;
+}
+
+.flipInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.flipFront,
+.flipBack {
+  backface-visibility: hidden;
+  position: absolute;
+  inset: 0;
+}
+
+.flipBack {
+  transform: rotateY(180deg);
+  overflow-y: auto;
+}
+
+.backBtn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.bmiHistoryContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  max-height: 420px;       /* visible height of history */
+  overflow-y: auto;        /* enable vertical scroll */
+  padding-right: 8px;      /* space for scrollbar */
+  scroll-behavior: smooth; /* smooth scrolling */
+}
+
+/* ===== Scrollbar Styling ===== */
+.bmiHistoryContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bmiHistoryContainer::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+}
+
+.bmiHistoryContainer::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #36d1dc, #5b86e5);
+  border-radius: 10px;
+}
+
+
+.bmiHistoryCard {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  padding: 16px;
+  transition: transform 0.2s ease;
+}
+
+.bmiHistoryCard:hover {
+  transform: translateY(-3px);
+}
+
+.bmiRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.bmiLabel {
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.bmiValue {
+  font-size: 22px;
+  font-weight: 700;
+  color: #36d1dc;
+}
+
+.bmiBadge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.underweight {
+  background: rgba(52,152,219,0.25);
+  color: #3498db;
+}
+
+.fit,
+.healthy {
+  background: rgba(46,204,113,0.25);
+  color: #2ecc71;
+}
+
+.overweight {
+  background: rgba(243,156,18,0.25);
+  color: #f39c12;
+}
+
+.obese {
+  background: rgba(231,76,60,0.25);
+  color: #e74c3c;
+}
+
+.bmiDate {
+  margin-top: 8px;
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.bmiHistoryBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 6px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  background: linear-gradient(
+    135deg,
+    rgba(54, 209, 220, 0.25),
+    rgba(91, 134, 229, 0.25)
+  );
+
+  border: 1px solid rgba(54, 209, 220, 0.6);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+
+  backdrop-filter: blur(6px);
+  transition: all 0.25s ease;
+}
+
+.bmiHistoryBtn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(54, 209, 220, 0.4);
+}
+
+.bmiHistoryBtn:active {
+  transform: scale(0.96);
+}
+
+/* ===== Todo Completion Animation (Card Only) ===== */
+
+.todoCongrats {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  color: white;
+  padding: 14px 20px;
+  border-radius: 14px;
+  font-weight: 600;
+  text-align: center;
+  width: 80%;
+
+  animation: todoFloatUp 3.5s ease forwards;
+  z-index: 5;
+}
+
+/* IMPORTANT: make card relative */
+.glassCard {
+  position: relative;
+}
+
+/* Animation: bottom → top → disappear */
+@keyframes todoFloatUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  15% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -120px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -160px);
+  }
+}
+/* ===== Water Goal Completion Animation ===== */
+
+.waterCongrats {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+  color: white;
+  padding: 14px 20px;
+  border-radius: 16px;
+  font-weight: 600;
+  text-align: center;
+  width: 85%;
+
+  animation: waterFloatUp 3.5s ease forwards;
+  z-index: 5;
+  overflow: hidden;
+}
+
+/* floating water drops */
+.waterCongrats::before,
+.waterCongrats::after {
+  content: "💧";
+  position: absolute;
+  font-size: 20px;
+  animation: waterDrop 2.5s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+.waterCongrats::before {
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.waterCongrats::after {
+  right: 25%;
+  animation-delay: 1s;
+}
+
+/* card must be relative */
+.glassCard {
+  position: relative;
+}
+
+/* message float animation */
+@keyframes waterFloatUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  15% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+    transform: translate(-50%, -120px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -160px);
+  }
+}
+
+/* water drop animation */
+@keyframes waterDrop {
+  0% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+} 
+
+.pieTaskBreakdown {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+.taskGroup {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 14px;
+  backdrop-filter: blur(8px);
+}
+.doneTitle {
+  color: #2ecc71;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+.pendingTitle {
+  color: #f39c12;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pendingTask {
+  background: linear-gradient(
+    135deg,
+    rgba(243, 156, 18, 0.22),
+    rgba(243, 156, 18, 0.06)
+  );
+  border: 1px solid rgba(243, 156, 18, 0.4);
+  color: #fff4d6;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.emptyText {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  font-style: italic;
+}
+.taskGroup.completedBox {
+  background: linear-gradient(
+    135deg,
+    rgba(46, 204, 113, 0.18),
+    rgba(46, 204, 113, 0.05)
+  );
+  border: 1px solid rgba(46, 204, 113, 0.45);
+  box-shadow: 0 0 18px rgba(46, 204, 113, 0.25);
+}
+
+.doneTask {
+  background: linear-gradient(
+    135deg,
+    rgba(46, 204, 113, 0.35),
+    rgba(46, 204, 113, 0.15)
+  );
+  border: 1px solid rgba(46, 204, 113, 0.6);
+  color: #eafff3;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.waterBreakdown {
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* 👈 SIDE BY SIDE */
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.waterCompletedBox {
+  background: linear-gradient(
+    135deg,
+    rgba(46, 204, 113, 0.18),
+    rgba(46, 204, 113, 0.05)
+  );
+  border: 1px solid rgba(46, 204, 113, 0.45);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 0 20px rgba(46, 204, 113, 0.25);
+  min-height: 120px;
+}
+
+.waterDoneTitle {
+  color: #2ecc71;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.waterDonePill {
+  background: linear-gradient(
+    135deg,
+    rgba(46, 204, 113, 0.35),
+    rgba(46, 204, 113, 0.15)
+  );
+  border: 1px solid rgba(46, 204, 113, 0.6);
+  color: #eafff3;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.waterPendingBox {
+  background: linear-gradient(
+    135deg,
+    rgba(243, 156, 18, 0.22),
+    rgba(243, 156, 18, 0.06)
+  );
+  border: 1px solid rgba(243, 156, 18, 0.45);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 0 18px rgba(243, 156, 18, 0.22);
+  min-height: 120px;
+}
+
+
+.waterPendingTitle {
+  color: #f39c12;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.waterPendingPill {
+  background: linear-gradient(
+    135deg,
+    rgba(243, 156, 18, 0.35),
+    rgba(243, 156, 18, 0.15)
+  );
+  border: 1px solid rgba(243, 156, 18, 0.6);
+  color: #fff4d6;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.setGoalBtn {
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 10px;
+
+  background: linear-gradient(
+    135deg,
+    #36d1dc,
+    #5b86e5
+  );
+
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+
+  box-shadow:
+    0 0 12px rgba(54, 209, 220, 0.55),
+    inset 0 0 8px rgba(255,255,255,0.15);
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.setGoalBtn:hover {
+  transform: translateY(-1px) scale(1.03);
+  box-shadow:
+    0 0 18px rgba(54, 209, 220, 0.9),
+    inset 0 0 10px rgba(255,255,255,0.2);
+}
+
+.setGoalBtn:active {
+  transform: scale(0.96);
+  box-shadow:
+    0 0 8px rgba(54, 209, 220, 0.6);
+}
+
+.setGoalBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.fullWidthSection {
+  margin-top: 24px;
+}
+.challengeSection,
+.streakSection {
+  width: 100%;
+  margin: 28px 0;
+  padding: 0 6px;
+  position: relative;
+  z-index: 2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
