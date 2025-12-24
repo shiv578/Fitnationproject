@@ -1,0 +1,117 @@
+/* ===============================
+   ❄ GLOBAL WINTER MODE
+================================ */
+
+body.winter-mode {
+  background-color: #070b1a;
+}
+
+/* ===============================
+   ❄ STATUS LABEL
+================================ */
+
+.winterLabel {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 999999;
+  font-size: 13px;
+  color: #e6f7ff;
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* ===============================
+   ❄ ATMOSPHERE
+================================ */
+
+.winter-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    circle at top,
+    rgba(180, 220, 255, 0.12),
+    transparent 65%
+  );
+}
+
+.winter-fog {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(200, 230, 255, 0.06),
+    transparent 40%,
+    rgba(200, 230, 255, 0.04)
+  );
+  animation: fogPulse 12s ease-in-out infinite;
+}
+
+@keyframes fogPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Frost vignette */
+.frost-border {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  box-shadow: inset 0 0 120px rgba(180, 220, 255, 0.2);
+}
+
+/* ===============================
+   ❄ SNOW LAYERS
+================================ */
+
+.snow-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.snow-layer.far { z-index: 4; opacity: 0.45; }
+.snow-layer.mid { z-index: 5; opacity: 0.7; }
+.snow-layer.near { z-index: 6; opacity: 1; }
+
+/* ===============================
+   ❄ SNOWFLAKE
+================================ */
+
+.snowflake {
+  position: absolute;
+  top: -40px;
+  color: white;
+  animation: snowFall linear infinite;
+  filter:
+    drop-shadow(0 0 6px rgba(255,255,255,0.8))
+    drop-shadow(0 0 16px rgba(180,220,255,0.7));
+  will-change: transform;
+}
+
+/* Natural fall + wind */
+@keyframes snowFall {
+  from {
+    transform: translateY(-40px) translateX(0);
+  }
+  to {
+    transform: translateY(120vh) translateX(var(--drift));
+  }
+}
+
+/* ===============================
+   ❄ SAFETY
+================================ */
+
+.snow-layer,
+.winter-glow,
+.winter-fog,
+.frost-border {
+  pointer-events: none;
+}

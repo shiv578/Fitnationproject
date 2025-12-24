@@ -272,59 +272,211 @@ transform: translateY(-4px) scale(0.97);
 
 /* ===== WELCOME BANNER ENHANCEMENT ===== */
 .welcomeBanner {
-  background: 
-    linear-gradient(135deg, rgba(54, 209, 220, 0.1) 0%, rgba(91, 134, 229, 0.1) 100%),
-    url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><path d="M30 0C13.4 0 0 13.4 0 30s13.4 30 30 30 30-13.4 30-30S46.6 0 30 0zm0 10c11 0 20 9 20 20s-9 20-20 20S10 41 10 30s9-20 20-20z" fill="rgba(255,255,255,0.03)"/></svg>');
-  border-radius: 24px;
-  padding: 30px 35px;
-  margin-bottom: 40px;
-  border: 1px solid rgba(54, 209, 220, 0.3);
   position: relative;
   overflow: hidden;
-  animation: slideUpFade 0.8s ease-out 0.2s both;
+  isolation: isolate; /* Creates new stacking context */
+
+  /* Improved gradient background with better color harmony */
+  background:
+    /* Base gradient with more depth */
+    linear-gradient(
+      135deg,
+      rgba(54, 209, 220, 0.15) 0%,
+      rgba(91, 134, 229, 0.15) 50%,
+      rgba(91, 84, 229, 0.1) 100%
+    ),
+    /* Radial highlights positioned strategically */
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(120, 200, 255, 0.2) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      circle at 15% 85%,
+      rgba(54, 209, 220, 0.15) 0%,
+      transparent 55%
+    ),
+    /* Optimized SVG pattern with reduced complexity */
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" opacity="0.04"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  border-radius: 28px;
+  padding: 42px 46px;
+  margin-bottom: 48px;
+
+  /* Enhanced border with gradient */
+  border: 1.5px solid;
+  border-image: linear-gradient(
+    135deg,
+    rgba(120, 200, 255, 0.45),
+    rgba(54, 209, 220, 0.45),
+    rgba(91, 134, 229, 0.3)
+  ) 1;
+
+  /* Improved shadow with multiple layers for depth */
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    0 25px 60px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+
+  animation: slideUpFade 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow; /* Performance hint */
 }
 
-.welcomeBanner::before {
+.welcomeBanner:hover {
+  transform: translateY(-6px) scale(1.005);
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.2),
+    0 35px 90px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(54, 209, 220, 0.3),
+    0 0 120px rgba(91, 134, 229, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Subtle glow effect */
+.welcomeBanner::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--primary-gradient);
+  inset: -2px;
+  border-radius: 30px;
+  background: linear-gradient(
+    135deg,
+    rgba(54, 209, 220, 0.15),
+    rgba(91, 134, 229, 0.15),
+    transparent 50%
+  );
   opacity: 0;
   transition: opacity 0.5s ease;
   z-index: -1;
+  filter: blur(12px);
+}
+
+.welcomeBanner:hover::after {
+  opacity: 0.8;
+}
+
+/* Improved light sweep with better timing */
+.welcomeBanner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.25),
+    transparent 75%
+  );
+  opacity: 0;
+  transform: translateX(-100%) skewX(-15deg);
+  transition: opacity 0.4s ease, transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
 }
 
 .welcomeBanner:hover::before {
-  opacity: 0.05;
+  opacity: 0.15;
+  transform: translateX(100%) skewX(-15deg);
 }
 
 @keyframes slideUpFade {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+  }
+  70% {
+    transform: translateY(-4px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .welcomeTitle {
-  font-size: 28px;
-  font-weight: 800;
-  margin: 0 0 12px 0;
-  color: white;
-  background: linear-gradient(90deg, #ffffff, #a5b4fc);
+  font-size: 34px;
+  font-weight: 900;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+
+  /* Enhanced gradient with more stops */
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #d6e7ff 25%,
+    #bcd7ff 50%,
+    #a5b4fc 75%,
+    #93a2ff 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% auto;
+
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  animation: textShimmer 4s ease-in-out infinite;
+}
+
+@keyframes textShimmer {
+  0%, 100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
 }
 
 .welcomeText {
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 17px;
+  line-height: 1.7;
   margin: 0;
-  line-height: 1.6;
-  max-width: 800px;
+  max-width: 780px;
+  letter-spacing: 0.01em;
+
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2; /* Ensure text stays above effects */
 }
 
+/* Optional: Add a subtle floating animation */
+@media (prefers-reduced-motion: no-preference) {
+  .welcomeBanner {
+    animation: slideUpFade 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+               float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .welcomeBanner {
+    padding: 32px 28px;
+    margin-bottom: 32px;
+    border-radius: 24px;
+  }
+  
+  .welcomeTitle {
+    font-size: 28px;
+  }
+  
+  .welcomeText {
+    font-size: 16px;
+  }
+}
 /* ===== GRID CONTAINER & CARDS ENHANCEMENT ===== */
 .gridContainer {
   display: grid;
@@ -2840,6 +2992,33 @@ transform: translateY(-4px) scale(0.97);
   gap: 16px;
   margin-left: auto;
 }
+
+.snowToggleBtn {
+  padding: 8px 14px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.15);
+  color: white;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.snowToggleBtn:hover {
+  transform: scale(1.05);
+}
+
+/* ON STATE */
+.snowToggleOn {
+  background: linear-gradient(135deg, #ffffff, #cfeeff);
+  color: #003366;
+  box-shadow:
+    0 0 10px rgba(255,255,255,0.9),
+    0 0 25px rgba(140,200,255,0.9);
+}
+
 
 .googleBtn {
   display: flex;

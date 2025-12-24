@@ -7,12 +7,16 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, PieChart, Pie, Cell } from "rec
 import DailyChallenge from "./components/DailyChallenge";
 import StreakHeatmap from "./components/StreakHeatmap";
 import AchievementsModal from "./components/AchievementsModal";
+import WinterEffect from "./components/WinterEffect";
+import ChristmasTheme from "./components/ChristmasTheme";
+
+
 
 
 
 
 const Dashboard = () => {
-  // Constants
+  // Constant
               //doneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 
   const navigate = useNavigate();
@@ -76,6 +80,8 @@ const pendingTodos = selectedDayTodos.filter(t => !t.done);
   const [confirmTodoId, setConfirmTodoId] = useState(null);
   const [pieView, setPieView] = useState("today");
   const isViewingToday = selectedDate === todayStr;
+  const [snowOn, setSnowOn] = useState(false);//wintertheme
+
 
   // BMI State
   const [height, setHeight] = useState(175);
@@ -471,6 +477,7 @@ const resetWaterTracker = () => {
       alert("Failed to save todo");
     }
   };
+  //bmiapi
 
   const handleSaveBMI = async () => {
     try {
@@ -670,6 +677,7 @@ const confirmComplete = async (id) => {
   };
 
   // useEffect Hooks (in proper sequence)
+  //bbmi
   useEffect(() => {
     const heightInMeters = height / 100;
     const calculatedBmi = (weight / (heightInMeters * heightInMeters)).toFixed(1);
@@ -689,6 +697,7 @@ const confirmComplete = async (id) => {
       setBmiColor('#e74c3c');
     }
   }, [height, weight]);
+  
 
 useEffect(() => {
   if (waterGoalLiters == null) return;
@@ -922,16 +931,27 @@ useEffect(() => {
   // Main Render
   return (
     <div className={css.container}>
+      {snowOn && <WinterEffect />}
+      {snowOn && <ChristmasTheme />}
+
+
       <div className={css.contentContainer}>
         <nav className={css.navbar}>
           <div className={css.logo}>
             <h1 className={css.logoText}>FitNation</h1>
           </div>
 <div className={css.navRight}>
+<button
+  className={css.snowToggleBtn}
+  onClick={() => setSnowOn(prev => !prev)}
+>
+  {snowOn ? "❄ Snow OFF" : "❄ Snow ON"}
+</button>
+
+
   <GoogleFitLogin />
-
-
 </div>
+
 
           <div
             className={css.avatarWrapper}
@@ -1008,10 +1028,12 @@ useEffect(() => {
 
 {/* 🔥 DAILY CHALLENGE */}
 <section className={css.challengeSection}>
-  <DailyChallenge
-    userId={user?._id}
-    onCompleted={() => setStreakRefresh(v => v + 1)}
-  />
+<DailyChallenge
+  userId={user?._id}
+  onCompleted={() => setStreakRefresh(v => v + 1)}
+  snowOn={snowOn}
+/>
+
 </section>
 
 {/* 🔥 STREAK GRID */}

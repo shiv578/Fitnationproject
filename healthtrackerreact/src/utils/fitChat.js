@@ -73,7 +73,7 @@ export const FITCHAT_DATA = [
       "⚡ HIIT alternates intense bursts with rest: burns more calories in less time, boosts metabolism for hours after workout."
   },
   {
-    keywords: ["yoga benefits", "yoga for health"],
+    keywords: ["yoga benefits", "yoga for health","yoga"," what are benefits of yoga"],
     answer:
       "🧘 Yoga improves flexibility, balance, reduces stress, enhances mindfulness. Great for both body and mental health."
   },
