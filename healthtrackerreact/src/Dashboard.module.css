@@ -2952,40 +2952,61 @@ transform: translateY(-4px) scale(0.97);
 
 
 .fitDetails {
-  margin-top: 20px;
+  margin-top: 18px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
 .fitItem {
-  background: rgba(255, 255, 255, 0.04);
-  padding: 12px 18px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.03)
+  );
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: 0.25s ease;
+
+  transition: all 0.25s ease;
 }
 
 .fitItem:hover {
-  background: rgba(255, 255, 255, 0.07);
+  background: linear-gradient(
+    135deg,
+    rgba(54, 209, 220, 0.12),
+    rgba(91, 134, 229, 0.08)
+  );
+  border-color: rgba(54, 209, 220, 0.35);
   transform: translateX(4px);
 }
 
 .fitLabel {
-  font-weight: 700;
-  font-size: 16px;
-  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.3px;
 }
 
 .fitValue {
-  font-weight: 600;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 800;
   color: #36d1dc;
-  text-shadow: 0 0 6px rgba(54, 209, 220, 0.5);
+
+  text-shadow:
+    0 0 6px rgba(54, 209, 220, 0.5),
+    0 0 14px rgba(54, 209, 220, 0.3);
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
+
+
 .navRight {
   display: flex;
   align-items: center;

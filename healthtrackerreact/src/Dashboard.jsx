@@ -1050,13 +1050,39 @@ useEffect(() => {
               <div className={css.cardIcon}>💓</div>
               <h1 className={css.cardTitle}>Your Fitness Data</h1>
             </div>
+{/**herw */}
+        <div className={css.fitDetails}>
 
-            <div style={{ marginTop: "20px", color: "white", fontSize: "18px", lineHeight: "28px" }}>
-              <p><strong>Steps Today:</strong> {googleFitData.steps ?? "No Data"}</p>
-              <p><strong>Heart Rate:</strong> {googleFitData.heartRate ?? "No Data"} bpm</p>
-              <p><strong>Distance Walked:</strong> {googleFitData.distance ?? "No Data"} km</p>
-              <p><strong>Calories Burned:</strong> {googleFitData.calories ?? "No Data"} kcal</p>
-            </div>
+  <div className={css.fitItem}>
+    <span className={css.fitLabel}>Steps Today</span>
+    <span className={css.fitValue}>
+      {googleFitData.steps ?? "No Data"}
+    </span>
+  </div>
+
+  <div className={css.fitItem}>
+    <span className={css.fitLabel}>Heart Rate</span>
+    <span className={css.fitValue}>
+      {googleFitData.heartRate ?? "No Data"} bpm
+    </span>
+  </div>
+
+  <div className={css.fitItem}>
+    <span className={css.fitLabel}>Distance Walked</span>
+    <span className={css.fitValue}>
+      {googleFitData.distance ?? "No Data"} km
+    </span>
+  </div>
+
+  <div className={css.fitItem}>
+    <span className={css.fitLabel}>Calories Burned</span>
+    <span className={css.fitValue}>
+      {googleFitData.calories ?? "No Data"} kcal
+    </span>
+  </div>
+
+</div>
+{/*here to */}
           </div>
 
           <div className={`${css.glassCard} ${css.flipCard}`}>
