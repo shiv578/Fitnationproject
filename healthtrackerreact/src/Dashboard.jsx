@@ -150,9 +150,9 @@ const [isEditingWaterGoal, setIsEditingWaterGoal] = useState(false);
     },
     {
       id: 2,
-      name: "Cristiano Ronaldo",
+name: "Cristiano Ronaldo",
       sport: "Football",
-      image: "/CRISTIANO RONALDO.jpg",
+image: "/CRISTIANO.jpg",
       stats: "5% Body Fat | 84kg | 187cm",
       routine: {
         morning: "5:30 AM - Wake up\n6:00 AM - Protein breakfast\n7:00 AM - Cardio\n9:00 AM - Strength training",
@@ -162,9 +162,9 @@ const [isEditingWaterGoal, setIsEditingWaterGoal] = useState(false);
     },
     {
       id: 3,
-      name: "Serena Williams",
+image: "/serena-williams.jpg",
       sport: "Tennis",
-      image: "/Serena Williams.jpg.jpg",
+    image: "/Serena Williams.jpg",
       stats: "Muscle Mass 45% | 72kg | 175cm",
       routine: {
         morning: "6:00 AM - Wake up\n6:30 AM - Stretching\n7:00 AM - Breakfast\n8:00 AM - Tennis practice",
@@ -176,7 +176,7 @@ const [isEditingWaterGoal, setIsEditingWaterGoal] = useState(false);
       id: 4,
       name: "LeBron James",
       sport: "Basketball",
-      image: "/LeBron James.jpg.jpg",
+image: "/lebron-james.jpg",
       stats: "113kg | 206cm | Vertical Jump 111cm",
       routine: {
         morning: "5:00 AM - Wake up\n5:30 AM - Breakfast\n6:30 AM - Shooting drills\n8:00 AM - Weight training",
@@ -188,7 +188,7 @@ const [isEditingWaterGoal, setIsEditingWaterGoal] = useState(false);
       id: 5,
       name: "Simone Biles",
       sport: "Gymnastics",
-      image: "/SimoneBiles.jpg.jpg",
+image: "/simone-biles.jpg",
       stats: "47kg | 142cm | 5 Olympic Golds",
       routine: {
         morning: "6:30 AM - Wake up\n7:00 AM - Breakfast\n8:00 AM - Gym training",
@@ -200,7 +200,7 @@ const [isEditingWaterGoal, setIsEditingWaterGoal] = useState(false);
       id: 6,
       name: "Katie Ledecky",
       sport: "Swimming",
-      image: "/Katie Ledecky.jpg.jpg",
+image: "/katie-ledecky.jpg",
       stats: "Swims 60km/week | 5 Olympic Golds",
       routine: {
         morning: "4:30 AM - Wake up\n5:00 AM - Swim session\n7:30 AM - Breakfast",
@@ -212,7 +212,7 @@ const [isEditingWaterGoal, setIsEditingWaterGoal] = useState(false);
       id: 7,
       name: "Mary Kom",
       sport: "Boxing",
-      image: "/MaryKom.jpg.jpg",
+image: "/mary-kom.jpg",
       stats: "6 World Championships | 51kg | 158cm",
       routine: {
         morning: "5:00 AM - Wake up\n5:30 AM - Roadwork\n7:00 AM - Breakfast",
@@ -221,7 +221,7 @@ const [isEditingWaterGoal, setIsEditingWaterGoal] = useState(false);
       }
     }
   ]);
-
+bb   
   const [selectedCelebrity, setSelectedCelebrity] = useState(null);
   const sliderCelebrities = celebrities.filter(c =>
   [

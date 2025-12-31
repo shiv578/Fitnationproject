@@ -1,31 +1,48 @@
+require("dotenv").config();
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const bodyParser = require("body-parser");
 
 const createAccountRoute = require("./models/createaccount");
 const signInRoute = require("./models/signin");
 const updateProfileRoute = require("./models/updateProfile");
 const googleFitRoute = require("./googleFit/googleFitRoute");
-const googleFitRefreshRoute = require("./googleFit/googleFitRefresh");
+const fitChatRoute = require("./routes/fitChat");
+const bmiRoutes = require("./routes/bmiRoutes");
+const todoRoutes = require("./routes/todoRoutes");
+const waterRoutes = require("./routes/waterRoutes");
+const challengeRoutes = require("./routes/challengeRoutes");
 
 const app = express();
 
-// Middleware
+/* ---------- MIDDLEWARE ---------- */
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json()); // ✅ use built-in JSON parser (remove body-parser)
 
-// MongoDB Connection
-mongoose.connect("mongodb://localhost:27017/healthtracker")
+/* ---------- DATABASE ---------- */
+mongoose
+  .connect("mongodb://localhost:27017/healthtracker")
   .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log("DB Error:", err));
+  .catch(err => console.error("DB Error:", err));
 
-// Routes
+/* ---------- ROUTES ---------- */
 app.use("/api", createAccountRoute);
 app.use("/api", signInRoute);
 app.use("/api", updateProfileRoute);
-app.use("/api", googleFitRoute);        // ✅ Google Fit main route
-app.use("/api", googleFitRefreshRoute); // ✅ Google Fit refresh token route
 
-// Start Server
-app.listen(5000, () => console.log("Server running on port 5000"));
+app.use("/api", googleFitRoute);
+app.use("/api/fitchat", fitChatRoute);
+app.use("/api", bmiRoutes);
+app.use("/api", todoRoutes);
+app.use("/api", waterRoutes);
+
+// 🔥 DAILY CHALLENGE + STREAK
+app.use("/api/challenge", challengeRoutes);
+
+/* ---------- SERVER ---------- */
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () =>
+  console.log(`Server running on port ${PORT}`)
+);

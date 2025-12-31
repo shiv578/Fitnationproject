@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 const User = require("./users");
 
 router.post("/sign-in", async (req, res) => {
-  console.log("SIGN-IN API HIT:", req.body);  // <-- CHECK THIS LOG
 
   const { email, password } = req.body;
 
@@ -14,14 +13,14 @@ router.post("/sign-in", async (req, res) => {
 
   const user = await User.findOne({ email });
   if (!user) {
-    return res.status(400).json({ success: false, message: "User not found" });
+    return res.status(400).json({ success: false, message: "Email is not correct" });
   }
 
   const match = await bcrypt.compare(password, user.password);
   if (!match) {
     return res.status(400).json({ success: false, message: "Incorrect password" });
   }
-
+  
  return res.status(200).json({
   success: true,
   message: "Login successful",

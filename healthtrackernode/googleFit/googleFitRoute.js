@@ -142,4 +142,4 @@ async function fetchCalories(token) {
   return Math.round(kcal);
 }
 
-module.exports = router;
+module.exports = router;  
