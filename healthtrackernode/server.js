@@ -22,9 +22,10 @@ app.use(express.json()); // ✅ use built-in JSON parser (remove body-parser)
 
 /* ---------- DATABASE ---------- */
 mongoose
-  .connect("mongodb://localhost:27017/healthtracker")
-  .then(() => console.log("MongoDB Connected"))
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB Atlas Connected"))
   .catch(err => console.error("DB Error:", err));
+
 
 /* ---------- ROUTES ---------- */
 app.use("/api", createAccountRoute);
