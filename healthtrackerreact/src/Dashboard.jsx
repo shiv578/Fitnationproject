@@ -223,6 +223,18 @@ const [isEditingWaterGoal, setIsEditingWaterGoal] = useState(false);
   ]);
 
   const [selectedCelebrity, setSelectedCelebrity] = useState(null);
+  const sliderCelebrities = celebrities.filter(c =>
+  [
+    "Virat Kohli",
+    "Cristiano Ronaldo",
+    "Serena Williams",
+    "LeBron James",
+    "Katie Ledecky",
+    "Mary Kom",
+    "Simone Biles"
+  ].includes(c.name)
+);
+
 
   // Helper Functions
   const isToday = (dateStr) => dateStr === todayStr;
@@ -923,6 +935,20 @@ useEffect(() => {
     .catch(() => setTodayCompletion(0));
 
 }, [selectedDate, dailyTodo, user, todayStr]);
+
+
+useEffect(() => {
+  if (!sliderCelebrities.length) return;
+
+  const interval = setInterval(() => {
+    setSelectedIndex(prev =>
+      prev === sliderCelebrities.length - 1 ? 0 : prev + 1
+    );
+  }, 8000); // ⏱ 8 seconds
+
+  return () => clearInterval(interval);
+}, [sliderCelebrities.length]);
+
 
 
 
@@ -1721,12 +1747,8 @@ width:
           <div className={css.sliderLayout}>
             <div className={css.sliderMain}>
               <div className={css.slidesRow} style={{ transform: `translateX(-${selectedIndex * 100}%)` }}>
-                {celebrities
-                  .filter(c =>
-                    ["Virat Kohli", "Cristiano Ronaldo", "Serena Williams", "LeBron James",
-                      "Usain Bolt", "Katie Ledecky", "Mary Kom", "Simone Biles"].includes(c.name)
-                  )
-                  .map((celebrity, index) => (
+              {sliderCelebrities.map((celebrity, index) => (
+
                     <div
                       key={index}
                       className={css.slideCard}
@@ -1747,7 +1769,9 @@ width:
               </div>
 
               <button className={css.arrowLeft} onClick={() => setSelectedIndex(prev => Math.max(prev - 1, 0))}>⬅</button>
-              <button className={css.arrowRight} onClick={() => setSelectedIndex(prev => Math.min(prev + 1, 7))}>➡</button>
+              <button className={css.arrowRight} onClick={() =>
+  setSelectedIndex(prev =>
+    Math.min(prev + 1, sliderCelebrities.length - 1))}>➡</button>
             </div>
 
             <div className={css.chatBox}>
