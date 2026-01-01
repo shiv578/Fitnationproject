@@ -2,41 +2,44 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./SignIn.module.css";
 
+// ✅ BACKEND BASE URL (Render)
+const API_BASE = import.meta.env.VITE_API_URL;
+
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [toast, setToast] = useState({ show: false, message: "" });
-  const [showSuccess, setShowSuccess] = useState(false);
-  
 
+  // ✅ FIXED LOGIN FUNCTION
+  const handleLogin = async () => {
+    try {
+      const res = await fetch(`${API_BASE}/api/sign-in`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
 
+      const data = await res.json();
 
-const handleLogin = async () => {
-  const res = await fetch("http://localhost:5000/api/sign-in", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password })
-  });
+      setToast({ show: true, message: data.message });
+      setTimeout(() => setToast({ show: false, message: "" }), 3000);
 
-  const data = await res.json();
-setToast({ show: true, message: data.message });
-setTimeout(() => setToast({ show: false, message: "" }), 3000);
+      if (data.success) {
+        // ✅ SAVE USER FROM BACKEND
+        localStorage.setItem("user", JSON.stringify(data.user));
 
-  if (data.success) {
-    // ⭐ SAVE FULL USER OBJECT EXACTLY AS BACKEND SENDS
-    localStorage.setItem("user", JSON.stringify(data.user));
-
-    // Redirect
-  setTimeout(() => {
-    window.location.href = "/dashboard";
-  
-  }, 1800);  }
-
-};
-// not place that google fit button in the nav bar liie this
-
+        // ✅ REDIRECT
+        setTimeout(() => {
+          window.location.href = "/dashboard";
+        }, 1500);
+      }
+    } catch (error) {
+      console.error("LOGIN ERROR:", error);
+      alert("Server not reachable. Please try again later.");
+    }
+  };
 
   return (
     <div className={styles.wrapper}>

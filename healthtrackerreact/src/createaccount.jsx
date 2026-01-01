@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./CreateAccount.module.css";
 
+// ✅ BACKEND BASE URL (Render)
+const API_BASE = import.meta.env.VITE_API_URL;
+
 export default function Createaccount() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -20,24 +23,28 @@ export default function Createaccount() {
     });
   };
 
-  // ⭐ ADD THIS FUNCTION
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  // ✅ FIXED SUBMIT FUNCTION
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const res = await fetch("http://localhost:5000/api/create-account", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(formData),
-  });
+    try {
+      const res = await fetch(`${API_BASE}/api/create-account`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
 
-  const data = await res.json();
-  alert(data.message);
+      const data = await res.json();
+      alert(data.message);
 
-  if (data.success) {
-    window.location.href = "/";
-  }
-};
-
+      if (data.success) {
+        window.location.href = "/";
+      }
+    } catch (error) {
+      console.error("CREATE ACCOUNT ERROR:", error);
+      alert("Server not reachable. Please try again later.");
+    }
+  };
 
   return (
     <div className={styles.wrapper}>
@@ -116,11 +123,9 @@ const handleSubmit = async (e) => {
           />
         </div>
 
-        {/* ⭐ CHANGE THIS LINE */}
         <button className={styles.loginBtn} onClick={handleSubmit}>
-  Create Account
-</button>
-
+          Create Account
+        </button>
 
         <p className={styles.linkText}>
           Already have an account? <Link to="/">Sign In</Link>
