@@ -9,32 +9,32 @@ export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [toast, setToast] = useState({ show: false, message: "" });
   const [showSuccess, setShowSuccess] = useState(false);
-  
+  const API_BASE = import.meta.env.VITE_API_URL;
 
+  
 
 
 const handleLogin = async () => {
-  const res = await fetch("http://localhost:5000/api/sign-in", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password })
-  });
+  try {
+    const res = await fetch(`${API_BASE}/api/sign-in`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
 
-  const data = await res.json();
-setToast({ show: true, message: data.message });
-setTimeout(() => setToast({ show: false, message: "" }), 3000);
+    const data = await res.json();
+    alert(data.message);
 
-  if (data.success) {
-    // ⭐ SAVE FULL USER OBJECT EXACTLY AS BACKEND SENDS
-    localStorage.setItem("user", JSON.stringify(data.user));
-
-    // Redirect
-  setTimeout(() => {
-    window.location.href = "/dashboard";
-  
-  }, 1800);  }
-
+    if (data.success) {
+      localStorage.setItem("user", JSON.stringify(data.user));
+      window.location.href = "/dashboard";
+    }
+  } catch (err) {
+    console.error("LOGIN ERROR:", err);
+    alert("Server not reachable");
+  }
 };
+
 // not place that google fit button in the nav bar liie this
 
 

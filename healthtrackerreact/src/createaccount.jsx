@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./CreateAccount.module.css";
+const API_BASE = import.meta.env.VITE_API_URL;
+
 
 export default function Createaccount() {
   const [formData, setFormData] = useState({
@@ -24,17 +26,22 @@ export default function Createaccount() {
 const handleSubmit = async (e) => {
   e.preventDefault();
 
-  const res = await fetch("http://localhost:5000/api/create-account", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(formData),
-  });
+  try {
+    const res = await fetch(`${API_BASE}/api/create-account`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData)
+    });
 
-  const data = await res.json();
-  alert(data.message);
+    const data = await res.json();
+    alert(data.message);
 
-  if (data.success) {
-    window.location.href = "/";
+    if (data.success) {
+      window.location.href = "/";
+    }
+  } catch (err) {
+    console.error("CREATE ACCOUNT ERROR:", err);
+    alert("Server not reachable");
   }
 };
 
