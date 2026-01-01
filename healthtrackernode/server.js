@@ -18,7 +18,12 @@ const app = express();
 
 /* ---------- MIDDLEWARE ---------- */
 app.use(cors());
-app.use(express.json()); // ✅ use built-in JSON parser (remove body-parser)
+app.use(express.json());
+
+/* ---------- TEST ROOT ROUTE ---------- */
+app.get("/", (req, res) => {
+  res.send("FitNation Backend is running 🚀");
+});
 
 /* ---------- DATABASE ---------- */
 mongoose
@@ -26,19 +31,15 @@ mongoose
   .then(() => console.log("MongoDB Atlas Connected"))
   .catch(err => console.error("DB Error:", err));
 
-
 /* ---------- ROUTES ---------- */
 app.use("/api", createAccountRoute);
 app.use("/api", signInRoute);
 app.use("/api", updateProfileRoute);
-
 app.use("/api", googleFitRoute);
 app.use("/api/fitchat", fitChatRoute);
 app.use("/api", bmiRoutes);
 app.use("/api", todoRoutes);
 app.use("/api", waterRoutes);
-
-// 🔥 DAILY CHALLENGE + STREAK
 app.use("/api/challenge", challengeRoutes);
 
 /* ---------- SERVER ---------- */
