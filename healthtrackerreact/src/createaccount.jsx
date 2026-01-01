@@ -123,9 +123,11 @@ export default function Createaccount() {
           />
         </div>
 
+        {/* ⭐ CHANGE THIS LINE */}
         <button className={styles.loginBtn} onClick={handleSubmit}>
-          Create Account
-        </button>
+  Create Account
+</button>
+
 
         <p className={styles.linkText}>
           Already have an account? <Link to="/">Sign In</Link>
