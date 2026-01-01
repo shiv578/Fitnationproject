@@ -2,9 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./CreateAccount.module.css";
 
-// ✅ BACKEND BASE URL (Render)
-const API_BASE = import.meta.env.VITE_API_URL;
-
 export default function Createaccount() {
   const [formData, setFormData] = useState({
     firstName: "",
@@ -23,28 +20,24 @@ export default function Createaccount() {
     });
   };
 
-  // ✅ FIXED SUBMIT FUNCTION
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // ⭐ ADD THIS FUNCTION
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try {
-      const res = await fetch(`${API_BASE}/api/create-account`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-      });
+  const res = await fetch("http://localhost:5000/api/create-account", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  });
 
-      const data = await res.json();
-      alert(data.message);
+  const data = await res.json();
+  alert(data.message);
 
-      if (data.success) {
-        window.location.href = "/";
-      }
-    } catch (error) {
-      console.error("CREATE ACCOUNT ERROR:", error);
-      alert("Server not reachable. Please try again later.");
-    }
-  };
+  if (data.success) {
+    window.location.href = "/";
+  }
+};
+
 
   return (
     <div className={styles.wrapper}>

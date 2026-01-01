@@ -2,9 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./SignIn.module.css";
 
-// ✅ Backend URL (Render)
-const API_BASE = import.meta.env.VITE_API_URL;
-
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,33 +9,35 @@ export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   const [toast, setToast] = useState({ show: false, message: "" });
   const [showSuccess, setShowSuccess] = useState(false);
+  
 
-  const handleLogin = async () => {
-    try {
-      const res = await fetch(`${API_BASE}/api/sign-in`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
-      });
 
-      const data = await res.json();
 
-      setToast({ show: true, message: data.message });
-      setTimeout(() => setToast({ show: false, message: "" }), 3000);
+const handleLogin = async () => {
+  const res = await fetch("http://localhost:5000/api/sign-in", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password })
+  });
 
-      if (data.success) {
-        setShowSuccess(true);
-        localStorage.setItem("user", JSON.stringify(data.user));
+  const data = await res.json();
+setToast({ show: true, message: data.message });
+setTimeout(() => setToast({ show: false, message: "" }), 3000);
 
-        setTimeout(() => {
-          window.location.href = "/dashboard";
-        }, 1500);
-      }
-    } catch (error) {
-      console.error("LOGIN ERROR:", error);
-      alert("Server not reachable");
-    }
-  };
+  if (data.success) {
+    // ⭐ SAVE FULL USER OBJECT EXACTLY AS BACKEND SENDS
+    localStorage.setItem("user", JSON.stringify(data.user));
+
+    // Redirect
+  setTimeout(() => {
+    window.location.href = "/dashboard";
+  
+  }, 1800);  }
+
+};
+// not place that google fit button in the nav bar liie this
+
+
   return (
     <div className={styles.wrapper}>
       {/* Animated Background Elements */}
