@@ -10,6 +10,7 @@ import AchievementsModal from "./components/AchievementsModal";
 import WinterEffect from "./components/WinterEffect";
 import ChristmasTheme from "./components/ChristmasTheme";
 
+const API_BASE = import.meta.env.VITE_API_URL;
 
 
 
@@ -298,7 +299,7 @@ const addNewTodo = async () => {
   setNewTodo("");
 
   try {
-    await fetch("http://localhost:5000/api/todo/save", {
+await fetch(`${API_BASE}/api/todo/save`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -325,7 +326,7 @@ const deleteTodo = async (id) => {
 
   // Save to DB
   try {
-    await fetch("http://localhost:5000/api/todo/save", {
+await fetch(`${API_BASE}/api/todo/save`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -368,7 +369,8 @@ const handleWaterGoalChange = (e) => {
   if (!user?._id) return alert("User not logged in");
 
   try {
-    const res = await fetch("http://localhost:5000/api/water/set-goal", {
+    const res = awaitfetch(`${API_BASE}/api/water/set-goal`, {
+
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -472,7 +474,7 @@ const resetWaterTracker = () => {
         return;
       }
 
-      await fetch("http://localhost:5000/api/todo/save", {
+await fetch(`${API_BASE}/api/todo/save`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -498,7 +500,8 @@ const resetWaterTracker = () => {
         return;
       }
 
-      const res = await fetch("http://localhost:5000/api/bmi/save", {
+      const res = awaitfetch(`${API_BASE}/api/bmi/save`, {
+
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -524,7 +527,8 @@ const resetWaterTracker = () => {
       if (!user?._id) return alert("User not logged in");
       setLoadingBmiHistory(true);
 
-      const res = await fetch(`http://localhost:5000/api/bmi/history/${user._id}`);
+      const res = await fetch(`${API_BASE}/api/bmi/history/${user._id}`)
+
       const data = await res.json();
 
       if (data.success) {
@@ -548,10 +552,10 @@ const resetWaterTracker = () => {
   if (!confirmDelete) return;
 
   try {
-    const res = await fetch(
-      `http://localhost:5000/api/bmi/history/${user._id}`,
-      { method: "DELETE" }
-    );
+ const res = await fetch(
+  `${API_BASE}/api/bmi/history/${user._id}`
+);
+
 
     const data = await res.json();
 
@@ -623,7 +627,7 @@ const confirmComplete = async (id) => {
   setConfirmTodoId(null);
 
   try {
-    await fetch("http://localhost:5000/api/todo/save", {
+await fetch(`${API_BASE}/api/todo/save`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -649,7 +653,8 @@ const confirmComplete = async (id) => {
       newPassword: editData.newPassword
     };
 
-    const res = await fetch(`http://localhost:5000/api/update-profile/${user._id}`, {
+    const res = await fetch(`${API_BASE}/api/update-profile/${user._id}`, {
+
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
@@ -747,7 +752,8 @@ useEffect(() => {
   if (!user?._id || !isWaterGoalLocked) return;
 
   try {
-    await fetch("http://localhost:5000/api/water/update", {
+    await fetch(`${API_BASE}/api/water/update`, {
+
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -765,7 +771,7 @@ useEffect(() => {
 
   setWaterLoading(true);
 
-  fetch(`http://localhost:5000/api/water/history/${user._id}`)
+fetch(`${API_BASE}/api/water/history/${user._id}`)
     .then(res => res.json())
   .then(data => {
   if (!data.success) return;
@@ -813,7 +819,7 @@ useEffect(() => {
     const refreshToken = localStorage.getItem("googleFitRefreshToken");
     if (!refreshToken) return;
 
-    fetch("http://localhost:5000/api/googlefit/refresh", {
+fetch(`${API_BASE}/api/googlefit/refresh`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ refresh_token: refreshToken })
@@ -833,7 +839,7 @@ useEffect(() => {
   if (!user?._id) return;
   if (selectedDate !== todayStr) return;
 
-  fetch(`http://localhost:5000/api/todo/today/${user._id}`)
+fetch(`${API_BASE}/api/todo/today/${user._id}`)
     .then(res => res.json())
     .then(data => {
       const todos = data?.todos || [];
@@ -855,7 +861,7 @@ useEffect(() => {
   useEffect(() => {
     if (!user?._id) return;
 
-    fetch(`http://localhost:5000/api/todo/week/${user._id}`)
+fetch(`${API_BASE}/api/todo/week/${user._id}`)
       .then(res => res.json())
       .then(data => {
         setWeeklyTodoData(Array.isArray(data) ? data : []);
@@ -866,7 +872,7 @@ useEffect(() => {
   useEffect(() => {
     if (!user?._id) return;
 
-    fetch(`http://localhost:5000/api/todo/month/${user._id}`)
+fetch(`${API_BASE}/api/todo/month/${user._id}`)
       .then(res => res.json())
       .then(data => {
         setMonthlyTodoData(Array.isArray(data) ? data : []);
@@ -877,7 +883,7 @@ useEffect(() => {
 useEffect(() => {
   if (!user?._id) return;
 
-  fetch("http://localhost:5000/api/todo/auto-rollover", {
+fetch(`${API_BASE}/api/todo/auto-rollover`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ userId: user._id })
@@ -919,7 +925,7 @@ useEffect(() => {
   }
 
   // PAST → fetch from DB
-  fetch("http://localhost:5000/api/todo/by-date", {
+fetch(`${API_BASE}/api/todo/by-date`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
