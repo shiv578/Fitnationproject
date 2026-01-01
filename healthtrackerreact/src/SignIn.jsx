@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./SignIn.module.css";
 
-// ✅ BACKEND BASE URL (Render)
+// ✅ Backend URL (Render)
 const API_BASE = import.meta.env.VITE_API_URL;
 
 export default function SignIn() {
@@ -11,8 +11,8 @@ export default function SignIn() {
   const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [toast, setToast] = useState({ show: false, message: "" });
+  const [showSuccess, setShowSuccess] = useState(false);
 
-  // ✅ FIXED LOGIN FUNCTION
   const handleLogin = async () => {
     try {
       const res = await fetch(`${API_BASE}/api/sign-in`, {
@@ -27,20 +27,18 @@ export default function SignIn() {
       setTimeout(() => setToast({ show: false, message: "" }), 3000);
 
       if (data.success) {
-        // ✅ SAVE USER FROM BACKEND
+        setShowSuccess(true);
         localStorage.setItem("user", JSON.stringify(data.user));
 
-        // ✅ REDIRECT
         setTimeout(() => {
           window.location.href = "/dashboard";
         }, 1500);
       }
     } catch (error) {
       console.error("LOGIN ERROR:", error);
-      alert("Server not reachable. Please try again later.");
+      alert("Server not reachable");
     }
   };
-
   return (
     <div className={styles.wrapper}>
       {/* Animated Background Elements */}
