@@ -163,7 +163,7 @@ image: "/CRISTIANO.jpg",
     },
     {
       id: 3,
-image: "/serena-williams.jpg",
+      name: "Serena Williams",
       sport: "Tennis",
     image: "/Serena Williams.jpg",
       stats: "Muscle Mass 45% | 72kg | 175cm",
@@ -213,7 +213,7 @@ image: "/katie-ledecky.jpg",
       id: 7,
       name: "Mary Kom",
       sport: "Boxing",
-image: "/mary-kom.jpg",
+        image: "/mary-kom.jpg",
       stats: "6 World Championships | 51kg | 158cm",
       routine: {
         morning: "5:00 AM - Wake up\n5:30 AM - Roadwork\n7:00 AM - Breakfast",
@@ -222,7 +222,7 @@ image: "/mary-kom.jpg",
       }
     }
   ]);
-bb   
+
   const [selectedCelebrity, setSelectedCelebrity] = useState(null);
   const sliderCelebrities = celebrities.filter(c =>
   [
@@ -369,7 +369,7 @@ const handleWaterGoalChange = (e) => {
   if (!user?._id) return alert("User not logged in");
 
   try {
-    const res = awaitfetch(`${API_BASE}/api/water/set-goal`, {
+    const res = await fetch(`${API_BASE}/api/water/set-goal`, {
 
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -500,7 +500,7 @@ await fetch(`${API_BASE}/api/todo/save`, {
         return;
       }
 
-      const res = awaitfetch(`${API_BASE}/api/bmi/save`, {
+      const res = await fetch(`${API_BASE}/api/bmi/save`, {
 
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -552,8 +552,9 @@ await fetch(`${API_BASE}/api/todo/save`, {
   if (!confirmDelete) return;
 
   try {
- const res = await fetch(
-  `${API_BASE}/api/bmi/history/${user._id}`
+const res = await fetch(
+  `${API_BASE}/api/bmi/history/${user._id}`,
+  { method: "DELETE" }
 );
 
 
