@@ -20,7 +20,7 @@ const Dashboard = () => {
   // Constant
               //doneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 
-  const navigate = useNavigate();
+  const navigate =  useNavigate();
   const GLASS_CAPACITY = 500;
   const PIE_COLORS = ["#36d1dc", "#2c2f4a"];
   
