@@ -31,7 +31,7 @@ const Dashboard = () => {
   };
   
   const todayStr = getTodayLocal();
-  
+  //not
   const quotes = [
     "💪 The only bad workout is the one that didn't happen.",
     "🌊 Water is life. Stay hydrated, stay healthy!",
