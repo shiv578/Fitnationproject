@@ -165,7 +165,7 @@ image: "/CRISTIANO.jpg",
       id: 3,
       name: "Serena Williams",
       sport: "Tennis",
-    image: "/Serena Williams.jpg",
+    image: "/Serena-Williams.jpg",
       stats: "Muscle Mass 45% | 72kg | 175cm",
       routine: {
         morning: "6:00 AM - Wake up\n6:30 AM - Stretching\n7:00 AM - Breakfast\n8:00 AM - Tennis practice",
