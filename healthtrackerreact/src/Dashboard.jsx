@@ -1315,7 +1315,7 @@ value={waterGoalLiters ?? ""}
         alert(`Today's water goal set to ${waterGoalLiters} L 💧`);
       }}
     >
-      ✅ OK
+      ✅  OK
     </button>
 
   
