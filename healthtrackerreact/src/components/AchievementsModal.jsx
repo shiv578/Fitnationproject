@@ -59,7 +59,7 @@ export default function AchievementsModal({
             </div>
           </div>
 
-          <div className={css.statCard}>
+            <div className={css.statCard}>
             <div className={`${css.icon} ${css.green}`}>🏆</div>
             <div>
               <p className={css.statLabel}>Achievements</p>
