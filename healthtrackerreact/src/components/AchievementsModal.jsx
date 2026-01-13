@@ -70,7 +70,7 @@ export default function AchievementsModal({
           </div>
 
           <div className={css.statCard}>
-            <div className={`${css.icon} ${css.pink}`}>📅</div>
+            <div  className={`${css.icon} ${css.pink}`}>📅</div>
             <div>
               <p className={css.statLabel}>Active Days</p>
               <h2 className={css.statValue}>{activeDays}</h2>
