@@ -1440,7 +1440,7 @@ width:
                   value={newTodo}
                   onChange={(e) => setNewTodo(e.target.value)}
                 />
-                <button className={css.addTodoBtn} onClick={addNewTodo}>
+                 <button className={css.addTodoBtn} onClick={addNewTodo}>
                   ➕
                 </button>
               </div>
@@ -1462,7 +1462,7 @@ width:
                         }
                       }}
                     >
-                      {item.done && "✔"}
+                       {item.done && "✔"}
                     </div>
                     <span
                       className={css.todoLabel}
@@ -1475,7 +1475,7 @@ width:
                     </span>
                   </div>
 
-             <div className={css.todoRight}>
+                 <div className={css.todoRight}>
   <input
     type="text"
     value={item.target === "Required" ? "" : item.target}
