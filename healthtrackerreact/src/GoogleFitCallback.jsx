@@ -35,7 +35,7 @@ export default function GoogleFitCallback() {
 
   return (
     <h2 style={{ color: "white", textAlign: "center", marginTop: "40px" }}>
-      Connecting Google Fit...
+        Connecting Google Fit...
     </h2>
   );
 }

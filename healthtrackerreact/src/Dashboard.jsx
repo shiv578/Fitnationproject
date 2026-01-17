@@ -874,7 +874,7 @@ fetch(`${API_BASE}/api/todo/week/${user._id}`)
     if (!user?._id) return;
 
 fetch(`${API_BASE}/api/todo/month/${user._id}`)
-      .then(res => res.json())
+         .then(res => res.json())
       .then(data => {
         setMonthlyTodoData(Array.isArray(data) ? data : []);
       })
