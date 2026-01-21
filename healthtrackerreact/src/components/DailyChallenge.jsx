@@ -2,15 +2,17 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import css from "./DailyChallenge.module.css";
 
+const API_BASE = import.meta.env.VITE_API_URL;
+
 const DailyChallenge = ({ userId, onCompleted }) => {
   const [challenge, setChallenge] = useState(undefined);
   const [showConfirm, setShowConfirm] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    if (!userId) return;
+    if (!userId || !API_BASE) return;
 
-    fetch(`http://localhost:5000/api/challenge/today/${userId}`)
+    fetch(`${API_BASE}/api/challenge/today/${userId}`)
       .then(res => res.json())
       .then(data => {
         if (data.success) {
@@ -18,7 +20,7 @@ const DailyChallenge = ({ userId, onCompleted }) => {
         }
       })
       .catch(err => console.error("Daily challenge error", err));
-  }, [userId]);
+  }, [userId, API_BASE]);
 
   const confirmYes = async () => {
     if (submitting) return;
@@ -26,7 +28,7 @@ const DailyChallenge = ({ userId, onCompleted }) => {
 
     try {
       const res = await fetch(
-        "http://localhost:5000/api/challenge/complete",
+        `${API_BASE}/api/challenge/complete`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -35,6 +37,7 @@ const DailyChallenge = ({ userId, onCompleted }) => {
       );
 
       const data = await res.json();
+
       if (data.success) {
         setChallenge(prev => ({ ...prev, completed: true }));
         onCompleted && onCompleted();

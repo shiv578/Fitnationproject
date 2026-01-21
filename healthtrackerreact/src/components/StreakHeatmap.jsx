@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import css from "./StreakHeatmap.module.css";
 
+const API_BASE = import.meta.env.VITE_API_URL;
+
 const MONTHS = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -10,12 +12,12 @@ const StreakHeatmap = ({ userId, refresh }) => {
   const [monthsData, setMonthsData] = useState([]);
 
   useEffect(() => {
-    if (!userId) return;
+    if (!userId || !API_BASE) return;
 
-    fetch(`http://localhost:5000/api/challenge/streak/${userId}`)
+    fetch(`${API_BASE}/api/challenge/streak/${userId}`)
       .then(res => res.json())
       .then(data => {
-        if (!data.success) return;
+        if (!data.success || !Array.isArray(data.days)) return;
 
         const map = {};
 
@@ -33,18 +35,17 @@ const StreakHeatmap = ({ userId, refresh }) => {
         }));
 
         setMonthsData(result);
-      });
-  }, [userId, refresh]);
+      })
+      .catch(err => console.error("Streak fetch error", err));
+  }, [userId, refresh, API_BASE]);
 
   return (
     <div className={css.container}>
-      <div className={css.header}>
-      </div>
+      <div className={css.header}></div>
 
       <div className={css.months}>
         {monthsData.map((m, idx) => (
           <div key={idx} className={css.monthColumn}>
-            
             <div className={css.grid}>
               {m.days.map((d, i) => (
                 <div
@@ -54,7 +55,6 @@ const StreakHeatmap = ({ userId, refresh }) => {
                 />
               ))}
             </div>
-
             <div className={css.monthLabel}>{m.month}</div>
           </div>
         ))}
