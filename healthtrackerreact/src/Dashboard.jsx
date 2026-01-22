@@ -62,6 +62,7 @@ const Dashboard = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [currentQuote, setCurrentQuote] = useState(0);
 
+
   const [streakRefresh, setStreakRefresh] = useState(0);//streakk
 const [showAchievements, setShowAchievements] = useState(false);
 
@@ -1007,13 +1008,14 @@ useEffect(() => {
                 >
                   👤 Profile
                 </div>
+<div
+  className={`${css.userMenuItem} ${hoverIndex === 1 ? css.userMenuItemHover : ''}`}
+  onMouseEnter={() => setHoverIndex(1)}
+>
+  ⚙️ Settings
+</div>
 
-                <div
-                  className={`${css.userMenuItem} ${hoverIndex === 1 ? css.userMenuItemHover : ''}`}
-                  onMouseEnter={() => setHoverIndex(1)}
-                >
-                  ⚙️ Settings
-                </div>
+
 
                 <div
                   className={`${css.userMenuItem} ${hoverIndex === 2 ? css.userMenuItemHover : ''}`}
@@ -1043,6 +1045,10 @@ useEffect(() => {
 
               </div>
             )}
+ 
+
+ 
+
           </div>
         </nav>
 {showWelcome && (

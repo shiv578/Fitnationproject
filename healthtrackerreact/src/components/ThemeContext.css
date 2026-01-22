@@ -1,0 +1,29 @@
+/* default */
+:root {
+  --bg: #020617;
+  --card: #0f172a;
+  --text: #e5e7eb;
+  --accent: #22d3ee;
+}
+
+/* light theme */
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #020617;
+  --accent: #2563eb;
+}
+
+/* dark theme */
+[data-theme="dark"] {
+  --bg: #020617;
+  --card: #0f172a;
+  --text: #e5e7eb;
+  --accent: #22d3ee;
+}
+
+/* apply globally */
+body {
+  background: var(--bg);
+  color: var(--text);
+}

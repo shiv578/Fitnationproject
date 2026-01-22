@@ -16,6 +16,13 @@ export default function SignIn() {
 
 const handleLogin = async () => {
   try {
+    // 1️⃣ Wake backend first (Render cold start fix)
+    await wakeBackend();
+
+    // 2️⃣ Small delay to allow server + Mongo to be ready
+    await new Promise(res => setTimeout(res, 1200));
+
+    // 3️⃣ Now attempt login
     const res = await fetch(`${API_BASE}/api/sign-in`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -23,7 +30,11 @@ const handleLogin = async () => {
     });
 
     const data = await res.json();
-    alert(data.message);
+
+    if (!res.ok) {
+      alert(data.message || "Login failed");
+      return;
+    }
 
     if (data.success) {
       localStorage.setItem("user", JSON.stringify(data.user));
@@ -31,7 +42,7 @@ const handleLogin = async () => {
     }
   } catch (err) {
     console.error("LOGIN ERROR:", err);
-    alert("Server not reachable");
+    alert("Server is starting… please try again in a moment ⏳");
   }
 };
 
