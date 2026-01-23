@@ -1,8 +1,10 @@
 import css from "./Dashboard.module.css";
 
+const API_BASE = import.meta.env.VITE_API_URL;
+
 export default function GoogleFitLogin() {
   const connectGoogleFit = () => {
-    window.location.href = "http://localhost:5000/api/auth/google";
+    window.location.href = `${API_BASE}/api/auth/google`;
   };
 
   return (
@@ -18,4 +20,4 @@ export default function GoogleFitLogin() {
       <span className={css.googleText}>Login with Google Fit</span>
     </button>
   );
-}  
+}

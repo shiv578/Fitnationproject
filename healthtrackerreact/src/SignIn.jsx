@@ -14,7 +14,7 @@ export default function SignIn() {
   
 
 
-const handleLogin =   async () => {
+const handleLogin = async () => {
   try {
     const res = await fetch(`${API_BASE}/api/sign-in`, {
       method: "POST",
