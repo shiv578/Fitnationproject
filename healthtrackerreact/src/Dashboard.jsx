@@ -870,8 +870,9 @@ fetch(`${API_BASE}/api/todo/week/${user._id}`)
       })
       .catch(err => console.error("WEEK TODO FETCH ERROR:", err));
   }, [user]);
+//us
 
-  useEffect(() => {
+   useEffect(() => {
     if (!user?._id) return;
 
 fetch(`${API_BASE}/api/todo/month/${user._id}`)
