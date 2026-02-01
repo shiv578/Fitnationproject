@@ -1375,8 +1375,8 @@ width:
                       }}
                     />
                     🥛
-                  </div>
-                  <span className={css.glassLabel}>Glass {index + 1}</span>
+                      </div>
+                       <span className={css.glassLabel}>Glass {index + 1}</span>
                 </div>
               ))}
             </div>
