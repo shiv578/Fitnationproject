@@ -1384,14 +1384,14 @@ width:
 
 
 
-            <div className={css.waterActions}>
+                <div className={css.waterActions}>
               <button
-                className={`${css.button} ${css.primaryButton}`}
+                   className={`${css.button} ${css.primaryButton}`}
                 onClick={fillAllWater}
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
               >
-                <span>💧</span> Drink All
+                   <span>💧</span> Drink All
               </button>
               <button
                 className={`${css.button} ${css.secondaryButton}`}
