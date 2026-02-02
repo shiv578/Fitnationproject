@@ -485,7 +485,7 @@ transform: translateY(-4px) scale(0.97);
   margin-bottom: 50px;
 }
 
-
+/*css has to be imorove here glass is overlaping in the bmi*/
 
 .glassCard {
   background: rgba(255, 255, 255, 0.05);
