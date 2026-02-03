@@ -380,7 +380,7 @@ const handleWaterGoalChange = (e) => {
         goalLiters: waterGoalLiters
       })
     });
-
+///
     const data = await res.json();
 
   if (data.success) {
