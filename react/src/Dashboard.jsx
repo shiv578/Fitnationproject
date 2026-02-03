@@ -396,6 +396,7 @@ const handleWaterGoalChange = (e) => {
     alert("Server error");
   }
 };
+//thi
 
 
 const toggleWaterGlass = (index) => {
