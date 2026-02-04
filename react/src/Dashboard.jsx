@@ -380,14 +380,14 @@ const handleWaterGoalChange = (e) => {
         goalLiters: waterGoalLiters
       })
     });
-///
+/// 
     const data = await res.json();
 
   if (data.success) {
   setIsWaterGoalLocked(true);
 
   const count = (waterGoalLiters * 1000) / GLASS_CAPACITY;
-  setWaterGlasses(Array(count).fill(0));
+       setWaterGlasses(Array(count).fill(0));
 }
  else {
       alert(data.message || "Goal already set");
