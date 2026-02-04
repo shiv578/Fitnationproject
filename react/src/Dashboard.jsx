@@ -462,7 +462,7 @@ const resetWaterTracker = () => {
         break;
       }
     }
-
+//this is updatrd
     setTimeout(() => {
       setChatMessages(prev => [...prev, "FitChat: " + reply]);
     }, 500);
