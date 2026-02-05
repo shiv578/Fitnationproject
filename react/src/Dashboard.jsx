@@ -764,7 +764,7 @@ useEffect(() => {
         date: getTodayLocal(),
         totalDrankMl: totalMl
       })
-    });
+    });//knknknk
   } catch (err) {
     console.error("WATER UPDATE ERROR:", err);
   }
