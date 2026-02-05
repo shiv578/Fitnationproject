@@ -21,3 +21,4 @@ export const ThemeProvider = ({ children }) => {
 };
 //this i have to update
 export const useTheme = () => useContext(ThemeContext);
+// new theme has to be added dark theme
