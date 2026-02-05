@@ -662,8 +662,8 @@ await fetch(`${API_BASE}/api/todo/save`, {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
-
-    const data = await res.json();
+//
+      const data = await res.json();
     if (data.success) {
       alert("Profile Updated Successfully!");
       localStorage.setItem("user", JSON.stringify(data.user));
