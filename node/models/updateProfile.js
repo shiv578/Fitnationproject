@@ -33,7 +33,7 @@ router.put("/update-profile/:id", async (req, res) => {
           success: false,
           message: "Old password is required to set a new password"
         });
-
+//nnn
       // Compare old password
       const match = await bcrypt.compare(oldPassword, user.password);
       if (!match)
@@ -66,3 +66,5 @@ router.put("/update-profile/:id", async (req, res) => {
 
 module.exports = router;
 // 
+//
+//
