@@ -766,7 +766,7 @@ useEffect(() => {
       })
     });//knknknk
   } catch (err) {
-    console.error("WATER UPDATE ERROR:", err);
+        console.error("WATER UPDATE ERROR:", err);
   }
 };
 useEffect(() => {
@@ -777,7 +777,7 @@ useEffect(() => {
 fetch(`${API_BASE}/api/water/history/${user._id}`)
     .then(res => res.json())
   .then(data => {
-  if (!data.success) return;
+        if (!data.success) return;
 
   setWaterHistory(data.history || []);
 
