@@ -766,10 +766,13 @@ useEffect(() => {
       })
     });//knknknk
   } catch (err) {
-        console.error("WATER UPDATE ERROR:", err);
+           
+    console.error("WATER UPDATE ERROR:", err);
   }
 };
 useEffect(() => {
+ 
+ 
   if (!user?._id) return;
 
   setWaterLoading(true);
@@ -779,7 +782,9 @@ fetch(`${API_BASE}/api/water/history/${user._id}`)
   .then(data => {
         if (!data.success) return;
 
-  setWaterHistory(data.history || []);
+ 
+ 
+        setWaterHistory(data.history || []);
 
   const today = getTodayLocal();
   const todayRecord = data.history.find(d => d.date === today);
