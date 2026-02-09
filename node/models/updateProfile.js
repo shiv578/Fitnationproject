@@ -60,7 +60,7 @@ router.put("/update-profile/:id", async (req, res) => {
 
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ success: false, message: "Server error" });
+          return res.status(500).json({ success: false, message: "Server error" });
   }
 });
 

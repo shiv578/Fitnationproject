@@ -771,7 +771,8 @@ useEffect(() => {
   }
 };
 useEffect(() => {
- 
+     
+
  
   if (!user?._id) return;
 
@@ -797,7 +798,7 @@ fetch(`${API_BASE}/api/water/history/${user._id}`)
     return;
   }
 
-  setWaterGoalLiters(todayRecord.goalLiters);
+       setWaterGoalLiters(todayRecord.goalLiters);
   setIsWaterGoalLocked(true);
 
   const glassCount =
