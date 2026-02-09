@@ -798,7 +798,7 @@ fetch(`${API_BASE}/api/water/history/${user._id}`)
     return;
   }
 
-       setWaterGoalLiters(todayRecord.goalLiters);
+      a setWaterGoalLiters(todayRecord.goalLiters);
   setIsWaterGoalLocked(true);
 
   const glassCount =

@@ -79,7 +79,7 @@ export default function WinterEffect() {
               fontSize: `${f.size}px`,
               animationDuration: `${f.duration}s`,
               animationDelay: `${f.delay}s`,
-              "--drift": `${f.drift}px`
+                 "--drift": `${f.drift}px`
             }}
           >
             ❄

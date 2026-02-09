@@ -10,7 +10,7 @@ export const ThemeProvider = ({ children }) => {
 
   
   
-        useEffect(() => {
+          useEffect(() => {
       
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
