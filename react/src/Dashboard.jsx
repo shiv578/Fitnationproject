@@ -1015,7 +1015,7 @@ useEffect(() => {
                     setShowUserMenu(false);
                   }}
                 >
-                  👤 Profile
+                        👤 Profile
                      </div>
 <div
   className={`${css.userMenuItem} ${hoverIndex === 1 ? css.userMenuItemHover : ''}`}

@@ -59,9 +59,9 @@ export default function AchievementsModal({
             </div>
           </div>
 
-            <div className={css.statCard}>
-            <div className={`${css.icon} ${css.green}`}>🏆</div>
-            <div>
+                  <div className={css.statCard}>
+                 <div className={`${css.icon} ${css.green}`}>🏆</div>
+                 <div>
               <p className={css.statLabel}>Achievements</p>
               <h2 className={css.statValue}>
                 {achievementsUnlocked}/{totalAchievements}
@@ -76,6 +76,7 @@ export default function AchievementsModal({
               <h2 className={css.statValue}>{activeDays}</h2>
             </div>
           </div>
+        
 
         </div>
       </div>
