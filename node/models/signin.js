@@ -3,10 +3,12 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const User = require("./users");
 
-
-router.post("/sign-in", async (req, res) => {
+    
+     router.post("/sign-in", async (req, res) => {
 
   const { email, password } = req.body;
+  //in sign in the render is giving the problem in the cold start of the server this has to be imorove cause 
+  // it has to changed to the place when a user searches the domaain of the website 
 
   if (!email || !password) {
     return res.status(400).json({ success: false, message: "Email & password required" });
@@ -14,7 +16,7 @@ router.post("/sign-in", async (req, res) => {
 
   const user = await User.findOne({ email });
   if (!user) {
-    return res.status(400).json({ success: false, message: "Email is not correct" });
+    return res.status(400).json({ success: false, message: "Email is Incorrect" });
   }
 
   const match = await bcrypt.compare(password, user.password);
@@ -24,7 +26,7 @@ router.post("/sign-in", async (req, res) => {
   
  return res.status(200).json({
   success: true,
-  message: "Login successful",
+  message: "Login successful",// here i have to add an loder after the login succesful message came 
   user: {
     _id: user._id,
     firstName: user.firstName,

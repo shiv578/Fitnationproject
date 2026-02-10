@@ -798,7 +798,7 @@ fetch(`${API_BASE}/api/water/history/${user._id}`)
     return;
   }
 
-      a setWaterGoalLiters(todayRecord.goalLiters);
+       setWaterGoalLiters(todayRecord.goalLiters);
   setIsWaterGoalLocked(true);
 
   const glassCount =
@@ -1003,6 +1003,7 @@ useEffect(() => {
             <div className={css.userAvatar}>
               {user?.firstName?.[0] || "U"}
             </div>
+            {/* here i have to make a optiion to update prfile photo not just show the fitst letter of the name here */}
 
             {showUserMenu && (
               <div className={css.userMenu}>
@@ -1015,7 +1016,7 @@ useEffect(() => {
                   }}
                 >
                   👤 Profile
-                </div>
+                     </div>
 <div
   className={`${css.userMenuItem} ${hoverIndex === 1 ? css.userMenuItemHover : ''}`}
   onMouseEnter={() => setHoverIndex(1)}

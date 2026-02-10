@@ -29,7 +29,7 @@ const StreakHeatmap = ({ userId, refresh }) => {
           map[month].push(d);
         });
 
-        const result = Object.keys(map).map(m => ({
+                const result = Object.keys(map).map(m => ({
           month: MONTHS[m],
           days: map[m]
         }));

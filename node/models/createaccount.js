@@ -44,7 +44,7 @@ router.post("/create-account", async (req, res) => {
     return res.status(400).json({ success: false, message: "Email already registered" });
   }
 
-  // 8. HASH THE PASSWORD
+  // 8     . HASH THE PASSWORD
   const hashedPassword = await bcrypt.hash(password, 10);
 
   // 9. Save user
@@ -56,7 +56,7 @@ router.post("/create-account", async (req, res) => {
     gender,
     password: hashedPassword
   });
-
+// this section have to be imprve here cause this is causing error
   await newUser.save();
 
   return res.status(200).json({
