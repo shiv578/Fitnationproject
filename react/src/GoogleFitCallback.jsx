@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const API_BASE = import.meta.env.VITE_API_URL;
+const API_BASE =     import.meta.env.VITE_API_URL;
 
 export default function GoogleFitCallback() {
   const navigate = useNavigate();
+
+
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -33,6 +35,8 @@ export default function GoogleFitCallback() {
           alert(data.message || "Failed to connect Google Fit");
         }
 
+
+
         navigate("/dashboard");
       })
       .catch(err => {
@@ -43,6 +47,7 @@ export default function GoogleFitCallback() {
   }, [navigate]);
 
   return (
+    
     <h2 style={{ color: "white", textAlign: "center", marginTop: "40px" }}>
       Connecting Google Fit...
     </h2>
