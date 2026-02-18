@@ -31,7 +31,9 @@ const handleLogin = async () => {
     }
   } catch (err) {
     console.error("LOGIN ERROR:", err);
-    alert("Server not reachable");
+    alert("Server is starting please wait");
+        alert("Refresh and login again");
+
   }
 };
 
