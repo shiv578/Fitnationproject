@@ -968,7 +968,7 @@ useEffect(() => {
 
 
 
- // mm
+ // mm   
 
   // Main Render
   return (
@@ -980,8 +980,8 @@ useEffect(() => {
       <div className={css.contentContainer}>
         <nav className={css.navbar}>
           <div className={css.logo}>
-            <h1 className={css.logoText}>FitNation</h1>
-          </div>
+              <h1 className={css.logoText}>FitNation</h1>
+              </div>
 <div className={css.navRight}>
 <button
   className={css.snowToggleBtn}

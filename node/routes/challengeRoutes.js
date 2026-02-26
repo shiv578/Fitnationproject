@@ -71,15 +71,15 @@ router.get("/streak/:userId", async (req, res) => {
     userId,
     date: {
       $gte: start.toISOString().slice(0, 10),
-      $lte: end.toISOString().slice(0, 10)
+        $lte: end.toISOString().slice(0, 10)
     }
   }).lean();
 
-  const map = {};
-  records.forEach(r => (map[r.date] = r.completed));
+      const map = {};
+          records.forEach(r => (map[r.date] = r.completed));
 
-  const days = [];
-  for (let i = 0; i < 365; i++) {
+     const days = [];
+     for (let i = 0; i < 365; i++) {
     const d = new Date(start);
     d.setDate(start.getDate() + i);
     const ds = d.toISOString().slice(0, 10);
