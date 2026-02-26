@@ -56,7 +56,7 @@ router.post("/create-account", async (req, res) => {
     gender,
     password: hashedPassword
   });
-// this section have to b    e imprve here cause this is causing error
+// this section have to b       e imprve here cause this is causing error
   await newUser.save();
 
   return res.status(200).json({
