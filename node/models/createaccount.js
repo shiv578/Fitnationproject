@@ -7,8 +7,8 @@ const User = require("./users");
 router.post("/create-account", async (req, res) => {
   const { firstName, lastName, email, phone, gender, password, confirmPassword } = req.body;
 
-  // 1. Check required fields
-  if (!firstName || !lastName || !email || !phone || !gender || !password || !confirmPassword) {
+         // 1. Check required fields
+    if (!firstName || !lastName || !email || !phone || !gender || !password || !confirmPassword) {
     return res.status(400).json({ success: false, message: "All fields are required" });
   }
 
