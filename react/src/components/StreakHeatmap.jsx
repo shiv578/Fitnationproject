@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import css from "./StreakHeatmap.module.css";
 
 const API_BASE = import.meta.env.VITE_API_URL;
-
+//
 const MONTHS = [
   "Jan", "Feb", "Mar", "Apr", "May", "Jun",
   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
