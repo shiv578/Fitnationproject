@@ -20,7 +20,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-/* ---------- TEST ROOT ROUTE ---------- */
+/* ----------  TEST ROOT ROUTE ---------- */
 app.get("/", (req, res) => {
   res.send("FitNation Backend is running 🚀");
 });
