@@ -10,7 +10,7 @@ const bmiHistorySchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  category: {
+   category: {
     type: String,
     enum: ["Underweight", "Fit", "Overweight", "Obese"],
     required: true
