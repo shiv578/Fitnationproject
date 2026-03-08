@@ -6,7 +6,7 @@ export default function ChristmasTheme() {
   const [gifts, setGifts] = useState([]);
 
   useEffect(() => {
-    // 🎁 Drop 2 gifts every 1 second (5 times = 10 gifts)
+      // 🎁 Drop 2 gifts every 1 second (5 times = 10 gifts)
     let dropCount = 0;
 
     const giftInterval = setInterval(() => {
