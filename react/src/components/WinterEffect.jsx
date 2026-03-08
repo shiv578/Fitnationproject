@@ -24,7 +24,7 @@ export default function WinterEffect() {
 
   return (
     <>
-      {/* Status */}
+        {/* Status */}
       <div className="winterLabel">❄ Winter Mode</div>
 
         {/* Atmosphere */}
