@@ -238,7 +238,7 @@ image: "/katie-ledecky.jpg",
 );
 
 
-  // Helper Functions
+    // Helper Functions
   const isToday = (dateStr) => dateStr === todayStr;
 
   const getPiePercent = () => {
