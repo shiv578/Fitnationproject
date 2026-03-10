@@ -109,7 +109,7 @@ const [isEditingWaterGoal, setIsEditingWaterGoal] = useState(false);
 
 
 
-  // Google Fit State
+    // Google Fit State
   const [googleFitData, setGoogleFitData] = useState(
     JSON.parse(localStorage.getItem("googleFitData")) || {}
   );
