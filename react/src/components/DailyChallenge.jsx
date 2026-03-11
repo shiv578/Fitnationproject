@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import css from "./DailyChallenge.module.css";
 
-const API_BASE = import.meta.env.VITE_API_URL;
+ const API_BASE = import.meta.env.VITE_API_URL;
 
 const DailyChallenge = ({ userId, onCompleted }) => {
   const [challenge, setChallenge] = useState(undefined);
