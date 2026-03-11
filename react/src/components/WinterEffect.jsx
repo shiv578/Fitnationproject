@@ -1,4 +1,4 @@
- import { useMemo, useEffect } from "react";
+  import { useMemo, useEffect } from "react";
 import "./WinterEffect.css";
 
 export default function WinterEffect() {
