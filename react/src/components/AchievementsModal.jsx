@@ -8,7 +8,7 @@ export default function AchievementsModal({
   currentStreak = 14,
   achievementsUnlocked = 5,
   totalAchievements = 8,
-  activeDays = 42
+   activeDays = 42
 
   
 }) {
