@@ -23,7 +23,7 @@ router.post("/bmi/save", async (req, res) => {
     const record = await BMIHistory.create({
       userId,
       bmi,
-      category
+         category
     });
 
     res.json({
