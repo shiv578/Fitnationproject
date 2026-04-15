@@ -31,7 +31,7 @@ mongoose
   .then(() => console.log("MongoDB Atlas Connected"))
   .catch(err => console.error("DB Error:", err));
 
-/* ---------- ROUTES ---------- */
+ /* ---------- ROUTES ---------- */
 app.use("/api", createAccountRoute);
 app.use("/api", signInRoute);
 app.use("/api", updateProfileRoute);
