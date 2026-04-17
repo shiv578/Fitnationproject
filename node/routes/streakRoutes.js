@@ -2,7 +2,7 @@
  const router = express.Router();
 const { Types } = require("mongoose");
 
-const Streak = require("../models/Streak");        // your existing streak model
+const Streak = require("../models/Streak");         // your existing streak model
 const UserStreak = require("../models/UserStreak"); // ✅ daily streak (heatmap)
 const { getRandomTask } = require("../utils/streakTasks");
 
