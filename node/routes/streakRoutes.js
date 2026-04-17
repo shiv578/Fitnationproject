@@ -1,5 +1,5 @@
  const express = require("express");
-const router = express.Router();
+ const router = express.Router();
 const { Types } = require("mongoose");
 
 const Streak = require("../models/Streak");        // your existing streak model
