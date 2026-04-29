@@ -1,6 +1,6 @@
 const TASKS = [
   // -------- EASY (1–10) --------
-  { level: "Easy", text: "Walk 8,000 steps" },
+   { level: "Easy", text: "Walk 8,000 steps" },
   { level: "Easy", text: "Do 50 squats" },
   { level: "Easy", text: "Do 50 push-ups" },
   { level: "Easy", text: "Stretch for 20 minutes" },
