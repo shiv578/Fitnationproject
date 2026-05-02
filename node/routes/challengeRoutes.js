@@ -15,7 +15,7 @@ router.get("/today/:userId", async (req, res) => {
   const { userId } = req.params;
   const date = todayStr();
 
-  let record = await UserStreak.findOne({ userId, date });
+  let record = await UserStreak.findOne({ userId, date }); 
   if (record) {
     return res.json({ success: true, challenge: record });
   }
