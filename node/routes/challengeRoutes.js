@@ -8,7 +8,7 @@ const todayStr = () => {
   const d = new Date();
   d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); 
   return d.toISOString().slice(0, 10);
-};
+}; 
 
 /* GET TODAY'S CHALLENGE */
 router.get("/today/:userId", async (req, res) => {
