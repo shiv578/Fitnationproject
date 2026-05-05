@@ -1,4 +1,4 @@
-  export const FITCHAT_DATA = [
+   export const FITCHAT_DATA = [
   // Original entries
  
     {
