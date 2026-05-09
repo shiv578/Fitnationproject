@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
- import "./ChristmasTheme.css";
+ import "./ChristmasTheme.css"; 
 
 export default function ChristmasTheme() {
   const [showSanta, setShowSanta] = useState(true);
