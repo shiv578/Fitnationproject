@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
  import "./ChristmasTheme.css"; 
 
-export default function ChristmasTheme() { 
+export default function ChristmasTheme() {  
   const [showSanta, setShowSanta] = useState(true); 
   const [gifts, setGifts] = useState([]);
 
