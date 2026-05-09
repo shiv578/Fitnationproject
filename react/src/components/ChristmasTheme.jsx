@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
  import "./ChristmasTheme.css"; 
 
 export default function ChristmasTheme() {
-  const [showSanta, setShowSanta] = useState(true);
+  const [showSanta, setShowSanta] = useState(true); 
   const [gifts, setGifts] = useState([]);
 
   useEffect(() => {
