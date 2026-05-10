@@ -1,5 +1,5 @@
  const mongoose = require("mongoose");
- 
+  
 const UserStreakSchema = new mongoose.Schema(
   {
     userId: {
