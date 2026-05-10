@@ -8,7 +8,7 @@ const UserStreakSchema = new mongoose.Schema(
       required: true
     }, 
     date: { 
-      type: String, // YYYY-MM-DD
+      type: String, // YYYY-MM-DD 
       required: true
     },
     taskText: {
