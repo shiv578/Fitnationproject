@@ -7,7 +7,7 @@ const UserStreakSchema = new mongoose.Schema(
       ref: "users",
       required: true
     }, 
-    date: {
+    date: { 
       type: String, // YYYY-MM-DD
       required: true
     },
