@@ -5,7 +5,7 @@ const qs = require("qs");
 const { client_id, client_secret, redirect_uri, scopes } = require("./googleFitConfig");
 
 // ------------------------------
-// STEP 1 → GOOGLE LOGIN
+ // STEP 1 → GOOGLE LOGIN
 // ------------------------------
 router.get("/auth/google", (req, res) => {
   const url =
