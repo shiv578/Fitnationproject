@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+ import { useEffect, useState } from "react";
 import css from "./StreakHeatmap.module.css";
 
 const API_BASE = import.meta.env.VITE_API_URL;
