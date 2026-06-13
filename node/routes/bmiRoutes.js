@@ -7,7 +7,7 @@ const router = express.Router();
           /**
    *   SAVE BMI  
  */
-router.post("/bmi/save", async (req, res) => {  
+router.post("/bmi/save", async (req, res) => {   
   try {
     const { userId, bmi } = req.body;
 
