@@ -1,4 +1,4 @@
-const express = require("express");
+ const express = require("express");
 const BMIHistory = require("../models/BMIHistory");
 const { getBMICategory } = require("../utils/bmiCategory");
 
