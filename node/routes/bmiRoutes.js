@@ -5,7 +5,7 @@ const { getBMICategory } = require("../utils/bmiCategory");
 const router = express.Router();
   
           /**
-   *   SAVE BMI 
+   *   SAVE BMI  
  */
 router.post("/bmi/save", async (req, res) => {  
   try {
