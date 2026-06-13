@@ -1,6 +1,6 @@
  const express = require("express");
 const BMIHistory = require("../models/BMIHistory");
-const { getBMICategory } = require("../utils/bmiCategory");
+const { getBMICategory } = require("../utils/bmiCategory"); 
  
 const router = express.Router();
   
