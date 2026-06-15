@@ -4,7 +4,7 @@ import Createaccount from "./createaccount.jsx";
 import Dashboard from "./Dashboard.jsx";
 import GoogleFitCallback from "./GoogleFitCallback.jsx";
 import { ThemeProvider } from "./components/ThemeContext";
-  
+ 
 export default function App() {   
   return (
     <ThemeProvider>
