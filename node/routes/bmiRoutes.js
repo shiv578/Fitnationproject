@@ -9,7 +9,7 @@ const router = express.Router();
  */
 router.post("/bmi/save", async (req, res) => {   
   try {
-    const { userId, bmi } = req.body;
+    const { userId, bmi } = req.body; 
 
     if (!userId || !bmi) {
       return res.status(400).json({
