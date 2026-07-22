@@ -5,6 +5,6 @@
   storageBucket: "fitnation-5bf70.firebasestorage.app",
   messagingSenderId: "208973525620", 
   appId: "1:208973525620:web:894a154edfab349d649721",
-  measurementId: "G-4J4KFS7RYZ"
+  measurementId: "G-4J4KFS7RYZ" 
 }; 
  
