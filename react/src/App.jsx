@@ -6,7 +6,7 @@ import GoogleFitCallback from "./GoogleFitCallback.jsx";
 import { ThemeProvider } from "./components/ThemeContext";
  
 export default function App() {   
-  return (
+  return ( 
     <ThemeProvider>
       <Routes>
         <Route path="/" element={<SignIn />} />
