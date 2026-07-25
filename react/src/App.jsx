@@ -10,7 +10,7 @@ export default function App() {
     <ThemeProvider>
       <Routes>
         <Route path="/" element={<SignIn />} />
-        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signin" element={<SignIn />} /> 
         <Route path="/create-account" element={<Createaccount />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/auth/callback" element={<GoogleFitCallback />} />
