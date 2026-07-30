@@ -4,6 +4,7 @@
     {
          
     keywords: ["water", "hydration", "drink water"],
+         
     answer:
       "💧 Water is the building block of life. Our body contains nearly 60–70% water. Water helps regulate body temperature, remove toxins, and keep organs functioning properly."
   },
