@@ -14,6 +14,7 @@ const TodoItemSchema = new mongoose.Schema({
     default: false 
       
   }
+    
 });
 
 
