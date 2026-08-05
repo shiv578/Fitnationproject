@@ -4,6 +4,5 @@
   if (bmi >= 25 && bmi < 30) return "Overweight" ;
   return "Obese";  
                         
-
 } 
 module.exports = { getBMICategory };
