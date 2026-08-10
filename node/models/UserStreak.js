@@ -12,6 +12,7 @@ const UserStreakSchema = new mongoose.Schema(
       required: true
     },
     taskText: {
+        
       type: String,
       required: true,
       trim: true
