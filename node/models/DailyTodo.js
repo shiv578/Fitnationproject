@@ -5,6 +5,7 @@ const TodoItemSchema = new mongoose.Schema({
   target: String,
   done: Boolean,
   locked: {
+
       
     type: Boolean,
       
