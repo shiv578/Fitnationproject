@@ -10,6 +10,7 @@ const router = express.Router();
            
            
            
+           
    *   SAVE BMI    
  */
 router.post("/bmi/save", async (req, res) => {   
