@@ -3,9 +3,6 @@ const router = express.Router();
 const UserStreak = require("../models/UserStreak");
 const { getTaskForDay } = require("../utils/streakTasks");
 
-
-
-
 // YYYY-MM-DD (local) 
 const todayStr = () => {   
   const d = new Date();
