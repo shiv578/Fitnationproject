@@ -8,6 +8,7 @@ export default function ChristmasTheme() {
 
 
  
+
  
   useEffect(() => {
        // 🎁 Drop 2 gifts every 1 second (5 times = 10 gifts)
