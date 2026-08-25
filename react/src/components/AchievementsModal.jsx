@@ -3,6 +3,7 @@ import css from "./AchievementsModal.module.css";
 
 
 
+
 export default function AchievementsModal({
   onClose,
   tasksCompleted = 247,
