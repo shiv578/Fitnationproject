@@ -2,7 +2,6 @@
 const mongoose = require("mongoose");
 
 
-
 const TodoItemSchema = new mongoose.Schema({
   label: String,
     
