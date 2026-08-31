@@ -6,6 +6,7 @@ router.post("/ask", async (req, res) => {
   try {
     const { question } = req.body;
 
+        
     if (!question) {
       return res.json({
         success: false,
