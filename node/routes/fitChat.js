@@ -9,7 +9,6 @@ router.post("/ask", async (req, res) => {
         
 
         
-        
     if (!question) {
       return res.json({
         success: false,
