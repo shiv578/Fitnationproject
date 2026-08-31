@@ -7,6 +7,7 @@ router.post("/ask", async (req, res) => {
     const { question } = req.body;
 
         
+
         
         
     if (!question) {
