@@ -12,6 +12,7 @@ export default function AchievementsModal({
 
 
   
+  
 }) {
    useEffect(() => {
     document.body.style.overflow = "hidden";
