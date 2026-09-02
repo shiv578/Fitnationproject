@@ -10,6 +10,7 @@ export default function AchievementsModal({
   totalAchievements = 8,
    activeDays = 42
 
+
   
 }) {
    useEffect(() => {
