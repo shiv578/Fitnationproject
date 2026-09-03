@@ -4,9 +4,6 @@ const DailyTodo = require("../models/DailyTodo");
 
 const router = express.Router();
 
-
-
-
 /**
  * 🔄 CLEANUP OLD WATER DATA (KEEP LAST 30 DAYS)
  */
