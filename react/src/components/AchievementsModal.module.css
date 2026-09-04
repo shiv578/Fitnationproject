@@ -1,6 +1,7 @@
                 /* ===== FULLSCREEN OVERLAY ===== */
 
 .overlay {
+  
   position: fixed; 
   
   inset: 0;
