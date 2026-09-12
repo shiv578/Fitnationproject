@@ -10,6 +10,7 @@ const TodoItemSchema = new mongoose.Schema({
   locked: {
       
     type: Boolean,
+    
       
       
     default: false 
