@@ -5,7 +5,6 @@ const TodoItemSchema = new mongoose.Schema({
   label: String,
 
 
-
   target: String,
   done: Boolean,
   
