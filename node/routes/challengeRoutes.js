@@ -5,7 +5,7 @@ const { getTaskForDay } = require("../utils/streakTasks");
 
 
 
-// YYYY-MM-DD (local) 
+// YYYY -MM-DD (local) 
 const todayStr = () => {   
   const d = new Date();
   d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); 
