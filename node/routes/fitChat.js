@@ -3,6 +3,7 @@ const express = require("express");
  const router = express.Router();
 const axios = require("axios");
 
+
 router.post("/ask", async (req, res) => {
   try {
     const { question } = req.body;
