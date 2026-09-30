@@ -10,6 +10,7 @@ const bmiHistorySchema = new mongoose.Schema({
           
 
           
+          
     type: Number,
     required: true
   },
