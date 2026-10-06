@@ -2,7 +2,7 @@ const TASKS = [
    
 
    
-   // -------- EASY (1–10) --------
+   // -------- EASY(1–10) --------
   
   
   { level: "Easy", text: "Walk 8,000 steps" },
