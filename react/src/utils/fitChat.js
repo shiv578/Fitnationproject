@@ -3,7 +3,6 @@ export const FITCHAT_DATA = [
      
   // Original entries
 
-     
     {
          
          
