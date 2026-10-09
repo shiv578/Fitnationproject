@@ -7,6 +7,8 @@ const waterHistorySchema = new mongoose.Schema({
     required: true
   },
 
+
+  
   
   date: {
     type: String, // YYYY-MM-DD
