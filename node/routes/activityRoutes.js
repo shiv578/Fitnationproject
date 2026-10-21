@@ -1,6 +1,7 @@
 
 
 const firebaseConfig = {
+   
    apiKey: "AIzaSyDAVx8IEGn25XWAG_Q6AWV7e3n12aepgLQ",
   authDomain: "fitnation-5bf70.firebaseapp.com", 
   projectId: "fitnation-5bf70",  
