@@ -9,6 +9,7 @@ const { client_id, client_secret, redirect_uri, scopes } = require("./googleFitC
 
  // STEP 1 → GOOGLE LOGIN
 // ------------------------------
+
 router.get("/auth/google", (req, res) => {
   const url =
     "https://accounts.google.com/o/oauth2/v2/auth?" +
