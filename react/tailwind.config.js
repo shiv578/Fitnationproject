@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       backdropBlur: {
         'xs': '2px',
+        
       },
       borderWidth: {
         '3': '3px',
