@@ -8,6 +8,7 @@ module.exports = {
       backdropBlur: {
         'xs': '2px',
         
+        
       },
       borderWidth: {
         '3': '3px',
