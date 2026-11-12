@@ -8,7 +8,7 @@ const bmiHistorySchema = new mongoose.Schema({
   },
   bmi: {
 
-          
+      
           
 
           
